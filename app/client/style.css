@@ -3,8 +3,11 @@
 
 /* Set up some CSS variables to theme the application. */
 :root {
-  --matr-navbar-bg: #ECECEC;
-  --matr-navbar-bg-rgb: 236, 236, 236;
+  --matr-navbar-bg: #739072;
+  --matr-navbar-bg-rgb: 79, 111, 82;
+  --beige-bg: #ECE3CE;
+  --darkest-green: #3A4D39;
+  --bs-alert-bg: var(--darkest-green);
 }
 
 /* Change bootstrap variable values.
@@ -15,8 +18,13 @@ body {
 }
 
 /* Set the alert background on the signin and signup pages. */
-#signin-page .alert-light, #signup-page .alert-light {
+#signin-page .alert-light #signup-page {
   --bs-alert-bg: var(--matr-navbar-bg);
+  background-color: var(--matr-navbar-bg);
+}
+
+.page-background {
+  background-color: var(--beige-bg);
 }
 
 /* Define custom styles */
