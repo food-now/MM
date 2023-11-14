@@ -15,6 +15,7 @@ class VendorCollection {
       vendorName: String,
       owner: String,
       address: String,
+      weblink: String,
       logo: String,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
