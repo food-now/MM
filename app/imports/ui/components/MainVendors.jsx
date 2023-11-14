@@ -32,7 +32,7 @@ const MainVendors = () => {
       <div className="row">
         {vendorsData.map((vendor, index) => (
           <div className="col-md-3" key={index}>
-            <VendorsCard {...vendor} />
+            { /*<VendorsCard {...vendor} />*/ }
           </div>
         ))}
       </div>
