@@ -2,7 +2,7 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 
 /**
- * The MenuItemsCollection. It encapsulates state and variable values for stuff.
+ * The MenuItemsCollection. It encapsulates state and variable values for menu items.
  */
 class MenuItemsCollection {
   constructor() {
@@ -10,7 +10,8 @@ class MenuItemsCollection {
     this.name = 'MenuItemsCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
-    // Define the structure of each document in the collection.
+    /* Define the structure of each document in the collection.
+       All fields are required unless specified otherwise. */
     this.schema = new SimpleSchema(
       {
         owner: String,
