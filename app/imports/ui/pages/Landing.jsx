@@ -1,37 +1,72 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import { EggFried, MapFill, GlobeAmericas } from 'react-bootstrap-icons';
-/* A simple static component to render some text for the landing page. */
+import { Col, Container, Card, Row, Image } from 'react-bootstrap';
+
 const Landing = () => (
-  <Container id="landing-page" className="py-3">
-    <Row className="align-middle text-center">
-      <h1>Welcome to Food Now!</h1>
-      <h2>Looking for food on Campus? We can help!</h2>
-      <h4>Search by..</h4>
 
-      <Col xs={4}>
-        <EggFried size={100} />
-        <h1>Vendor List</h1>
-        <h5>List of all food options on campus. </h5>
-      </Col>
+  <div>
+    <div className="landing-picback" />
 
-      <Col xs={4}>
-        <MapFill size={100} />
-        <h1>Vendor Map</h1>
-        <h5>View food options on Campus Map.</h5>
-      </Col>
+    <div>
+      <Container className="p-3">
 
-      <Col xs={4}>
-        <GlobeAmericas size={100} />
-        <h1>Cuisine Type</h1>
-        <h5>Search vendors by cuisine type.</h5>
-      </Col>
+        <Row className="align-middle text-center pb-3">
+          <Col>
+            <h1>
+              Welcome to
+              {' '}
+              <Image
+                src="https://media.discordapp.net/attachments/1171567131977068675/1172018671007301732/Food_Now_Logo_1.png?ex=655eca72&is=654c5572&hm=30da1d3d7f91e9c61457bd049a0cbe1734d7eaa3d5c10be1beebec254778664d&=&width=792&height=792"
+                alt="logo"
+                style={{ width: '90px', height: '90px' }}
+              />
+            </h1>
+            <h2>Looking for some grindz on Campus but don&apos;t where to go? We can help!</h2>
+            <h3 className="pt-2">Food now allows you to search by....</h3>
+          </Col>
+        </Row>
 
-      <h4>And more!..</h4>
-      <h4>Login below to find your next meal</h4>
+        <Row className="align-middle text-center">
+          <Col xs={4}>
+            <Card>
+              <Card.Img variant="top" src="images/BeFunky-collage.jpg" />
+            </Card>
+            <div className="pt-2">
+              <h1>Vendor List</h1>
+              <h5>List of all food options on campus. </h5>
+            </div>
+          </Col>
 
-    </Row>
-  </Container>
+          <Col xs={4}>
+            <Card>
+              <Card.Img variant="top" src="images/fsvendormap.jpg" />
+            </Card>
+            <div className="pt-2">
+              <h1>Vendor Map</h1>
+              <h5>View food options on Campus Map.</h5>
+            </div>
+          </Col>
+
+          <Col xs={4}>
+            <Card>
+              <Card.Img variant="top" src="images/Foodlnl.jpg" />
+            </Card>
+            <div className="pt-2">
+              <h1>Cuisine Type</h1>
+              <h5>Search vendors by cuisine type.</h5>
+            </div>
+          </Col>
+        </Row>
+
+        <Row className="align-middle text-center pt-3">
+          <Col>
+            <h3 className="pb-2">And more!...</h3>
+            <h4>Create an acount now to find your next meal!</h4>
+          </Col>
+        </Row>
+
+      </Container>
+    </div>
+  </div>
 );
 
 export default Landing;

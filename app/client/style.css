@@ -34,3 +34,10 @@ body {
   padding-top: 10px;
   padding-bottom: 20px;
 }
+
+.landing-picback {
+  background-image: url("https://bloximages.newyork1.vip.townnews.com/manoanow.org/content/tncms/assets/v3/editorial/2/19/21905a60-46d9-11ea-9017-ebb58e267548/5e38a817c675d.image.jpg?resize=1396%2C930");
+  background-size: cover; /* Ensure the background image covers the entire div */
+  background-position: center; /* Center the background image */
+  min-height: 60vh; /* Set a minimum height to cover the entire viewport */
+}

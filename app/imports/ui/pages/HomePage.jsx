@@ -8,6 +8,7 @@ import RecentlyOrdered from '../components/RecentlyOrdered';
 const Landing = () => (
   <Container id="landing-page" fluid className="py-3">
     <Container>
+      <Row className="landing-row" />
       <Row>
         <MainVendors />
       </Row>
