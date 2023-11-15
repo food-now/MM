@@ -19,8 +19,8 @@ body {
 
 /* Set the alert background on the signin and signup pages. */
 #signin-page .alert-light #signup-page {
-  --bs-alert-bg: var(--matr-navbar-bg);
-  background-color: var(--matr-navbar-bg);
+  /*--bs-alert-bg: var(--matr-navbar-bg);
+  background-color: var(--matr-navbar-bg);*/
 }
 
 .page-background {
