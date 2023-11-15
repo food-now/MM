@@ -43,12 +43,10 @@ const SignUp = ({ location }) => {
     <Container id="signup-page" className="py-3 page-background">
       <Row className="justify-content-center">
         <Col xs={5}>
-          <Col className="text-center">
-            <h2>Register your account</h2>
-          </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card>
+            <Card bg='dark' text='white' border="success" className="justify-content-center">
               <Card.Body>
+                <Card.Header className="text-center fs-5">Register your account</Card.Header>
                 <TextField name="email" placeholder="E-mail address" />
                 <TextField name="password" placeholder="Password" type="password" />
                 <ErrorsField />
@@ -56,7 +54,7 @@ const SignUp = ({ location }) => {
               </Card.Body>
             </Card>
           </AutoForm>
-          <Alert variant="light">
+          <Alert variant="success">
             Already have an account? Login
             {' '}
             <Link to="/signin">here</Link>
