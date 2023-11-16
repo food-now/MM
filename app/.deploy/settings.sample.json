@@ -1,4 +1,9 @@
 {
+  "monti": {
+    "appId": "WaiGYcofKBWZ9LQjw",
+    "appSecret": "5f75f9c9-d5e3-4998-a751-ffa9730b3105"
+  },
+
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
     { "email": "john@foo.com", "password": "changeme" }
@@ -11,8 +16,4 @@
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
 
-  "monti": {
-    "appId": "changeme",
-    "appSecret": "changeme"
-  }
 }
