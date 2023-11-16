@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
-import { Button, Container, FormControl, Image, InputGroup, Nav, Navbar, NavDropdown, Form, FormCheck } from 'react-bootstrap';
+import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, PersonFill, PersonLinesFill, PersonPlusFill } from 'react-bootstrap-icons';
 
 const NavBar = () => {

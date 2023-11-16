@@ -45,7 +45,7 @@ const SignIn = () => {
       <Row className="justify-content-center">
         <Col xs={5}>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card bg='dark' text='white' border="success" className="justify-content-center">
+            <Card bg="dark" text="white" border="success" className="justify-content-center">
               <Card.Body>
                 <Card.Header className="text-center fs-5">Login to your account</Card.Header>
                 <TextField id="signin-form-email" name="email" placeholder="E-mail address" />

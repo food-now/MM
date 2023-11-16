@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Container, Row, Image } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Landing = () => (
 
@@ -60,7 +61,9 @@ const Landing = () => (
 
         <Row className="align-middle text-center pt-3">
           <Col>
-            <button type="button" className="btn btn-outline-success btn-lg">Login</button>
+            <Link to="/SignUp">
+              <button type="button" className="btn btn-outline-success btn-lg">Login</button>
+            </Link>
           </Col>
         </Row>
 
