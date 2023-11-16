@@ -1,22 +1,59 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, BoolField, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, BoolField, DateField, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+// import SimpleSchema from 'simpl-schema';
 import SimpleSchema from 'simpl-schema';
 import { MenuItems } from '../../api/MenuItem/MenuItem';
 
-// Create a schema to specify the structure of the data to appear in the form.
-const formSchema = new SimpleSchema({
-  name: String,
-  quantity: Number,
-  condition: {
-    type: String,
-    allowedValues: ['excellent', 'good', 'fair', 'poor'],
-    defaultValue: 'good',
-  },
+const vendors = ['test1', 'test2', 'test3'];
+const vendorList = [];
+vendors.forEach(function (element) {
+  vendorList.push({ label: element, value: element });
 });
+
+const allergen = ['a', 'b', 'c'];
+const allergenList = [];
+allergen.forEach(function (element) {
+  allergenList.push({ label: element, value: element });
+});
+// Create a schema to specify the structure of the data to appear in the form.
+// TODO: CREATE APPLY EVERYTHING FROM SCHEMA INTO LIST
+const formSchema = new SimpleSchema(
+  {
+    // owner: String,
+    // dateCreated: Date,
+    vendorName: {
+      type: String,
+      allowedValues: vendors,
+      defaultValue: vendors[0],
+    },
+    name: String,
+    price: {
+      type: Number,
+      min: 0.00,
+      max: 1000.00,
+    },
+    // allergens: [String],
+    // daysOfWeekAvaliable: [String],
+    special: {
+      type: Boolean,
+      required: false,
+    },
+    specialDate: {
+      type: Date,
+      required: false,
+    },
+    image: {
+      type: String,
+      defaultValue: '',
+      required: false,
+    },
+  },
+  { requiredByDefault: true },
+);
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
@@ -25,11 +62,12 @@ const AddItem = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { dateCreated, vendorName, name, price, allergens, daysOfWeekAvaliable, special, specialDate, image } = data;
+    const { vendorName, name, price, special, specialDate, image } = data;
     const owner = Meteor.user().username;
+    // TODO: DATE CREATED = TODAY'S DATE (PROBABLY A BUILT IN FEATURE FOR FETCHING THIS INFO)
+    // TODO: IMPLEMENT THE REST OF THE INFO FOR INSERTION OR MAKE THINGS OPTIONAL FOR TESTING
     MenuItems.collection.insert(
-      { dateCreated, vendorName, name, price, allergens, daysOfWeekAvaliable,
-        special, specialDate, image, owner },
+      { vendorName, name, price, special, specialDate, image, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -54,9 +92,10 @@ const AddItem = () => {
                 <TextField name="name" />
                 <NumField name="price" decimal={2} />
                 <TextField name="image" />
+                <SelectField name="vendorName" />
                 <BoolField name="special" />
-                <SelectField name="allergens" choices={['Nut', 'etc']} />
-                <SelectField name="vendorName" choices={['a', 'b', 'test']} />
+                <DateField name="specialDate" />
+                { /* <SelectField name="allergens" choices={allergenList} /> */ }
                 <SubmitField value="Submit" />
                 <ErrorsField />
               </Card.Body>
