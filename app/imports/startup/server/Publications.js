@@ -1,22 +1,39 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { Stuffs } from '../../api/stuff/Stuff';
+import { MenuItems } from '../../api/MenuItem/MenuItem';
+import { vendors } from '../../api/Vendor/Vendor';
 
-// User-level publication.
-// If logged in, then publish documents owned by this user. Otherwise, publish nothing.
-Meteor.publish(Stuffs.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Stuffs.collection.find({ owner: username });
+// Customer-level publication.
+// If logged in with customer role, then publish all menu items from all vendors.
+// Should not give customers the owner ID associated with the menu item. They can get the vendor from vendorName field.
+// Otherwise, publish nothing.
+Meteor.publish(MenuItems.customerPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'customer')) {
+    return MenuItems.collection.find({}, {
+      fields: {
+        owner: false,
+      },
+    });
+  }
+  return this.ready();
+});
+
+// Vendor-level publication.
+// If logged in with vendor role, then publish all menu items owned by this vendor user.
+// Otherwise, publish nothing.
+Meteor.publish(MenuItems.vendorPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'vendor')) {
+    const userID = Meteor.users.findOne(this.userId)._id;
+    return MenuItems.collection.find({ owner: userID });
   }
   return this.ready();
 });
 
 // Admin-level publication.
 // If logged in and with admin role, then publish all documents from all users. Otherwise, publish nothing.
-Meteor.publish(Stuffs.adminPublicationName, function () {
+Meteor.publish(MenuItems.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Stuffs.collection.find();
+    return MenuItems.collection.find();
   }
   return this.ready();
 });
