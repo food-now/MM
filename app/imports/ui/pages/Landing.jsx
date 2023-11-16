@@ -27,30 +27,24 @@ const Landing = () => (
 
         <Row className="align-middle text-center">
           <Col xs={4}>
-            <Card>
-              <Card.Img variant="top" src="images/BeFunky-collage.jpg" />
-            </Card>
-            <div className="pt-2">
+            <div className="pt-2" >
+              <img src="images/BeFunky-collage.jpg" class="rounded img-fluid"  alt="VendorCollage"/>
               <h1>Vendor List</h1>
               <h5>List of all food options on campus. </h5>
             </div>
           </Col>
 
           <Col xs={4}>
-            <Card>
-              <Card.Img variant="top" src="images/fsvendormap.jpg" />
-            </Card>
             <div className="pt-2">
+              <img src="images/fsvendormap.jpg" className="rounded img-fluid" alt="VendorMapImg"/>
               <h1>Vendor Map</h1>
               <h5>View food options on Campus Map.</h5>
             </div>
           </Col>
 
           <Col xs={4}>
-            <Card>
-              <Card.Img variant="top" src="images/Foodlnl.jpg" />
-            </Card>
             <div className="pt-2">
+              <img src="images/Foodlnl.jpg" className="rounded img-fluid" alt="CusineTypeImage"/>
               <h1>Cuisine Type</h1>
               <h5>Search vendors by cuisine type.</h5>
             </div>
@@ -64,7 +58,14 @@ const Landing = () => (
           </Col>
         </Row>
 
+        <Row className="align-middle text-center pt-3">
+          <Col>
+            <button type="button" className="btn btn-outline-success btn-lg">Login</button>
+          </Col>
+        </Row>
+
       </Container>
+
     </div>
   </div>
 );
