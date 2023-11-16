@@ -40,11 +40,11 @@ const SignUp = ({ location }) => {
     return <Navigate to={from} />;
   }
   return (
-    <Container id="signup-page" className="py-3 page-background">
+    <Container id="signup-page" className="py-5 page-background">
       <Row className="justify-content-center">
         <Col xs={5}>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card bg='dark' text='white' border="success" className="justify-content-center">
+            <Card bg="dark" text="white" border="success" className="justify-content-center">
               <Card.Body>
                 <Card.Header className="text-center fs-5">Register your account</Card.Header>
                 <TextField name="email" placeholder="E-mail address" />
