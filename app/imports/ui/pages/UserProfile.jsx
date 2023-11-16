@@ -7,6 +7,7 @@ import FoodCard from '../components/FoodCard';
 
 /* Renders the AddStuff page for adding a document. */
 const UserProfile = () => {
+
   const foodData = [
     // Replace with your actual food data
     { name: 'Food 1', description: 'Description 1', image: 'https://img.freepik.com/premium-vector/piece-cheese-pizza-pixel-art-style_475147-1272.jpg' },
@@ -24,6 +25,27 @@ const UserProfile = () => {
   const userEmail = currentUser.emails && currentUser.emails[0] && currentUser.emails[0].address;
   const userIsAdmin = Roles.userIsInRole(currentUser._id, 'admin');
 
+  const getUserRole = () => {
+    const userId = currentUser._id;
+
+    console.log('User ID:', userId);
+
+    if (Roles.userIsInRole(userId, 'vendor')) {
+      console.log('User is a vendor');
+      return 'Vendor';
+    }
+
+    if (Roles.userIsInRole(userId, 'admin')) {
+      console.log('User is an admin');
+      return 'Admin';
+    }
+
+    console.log('User is a customer');
+
+    // Assuming 'customer' is the default role
+    return 'Customer';
+  }
+
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   return (
     <Container className="py-3">
@@ -34,7 +56,7 @@ const UserProfile = () => {
             <Card.Body>
               <h1>Name: N/A</h1>
               <h1>Email: {userEmail}</h1>
-              <h1>Account Type: {userIsAdmin ? 'Admin' : 'Customer'}</h1>
+              <h1>Account Type: {getUserRole()}</h1>
             </Card.Body>
           </Card>
         </Col>
