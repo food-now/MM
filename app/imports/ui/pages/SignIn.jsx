@@ -41,15 +41,13 @@ const SignIn = () => {
   }
   // Otherwise return the Login form.
   return (
-    <Container id="signin-page" className="py-3 page-background">
+    <Container id="signin-page" className="py-5 page-background">
       <Row className="justify-content-center">
         <Col xs={5}>
-          <Col className="text-center">
-            <h2>Login to your account</h2>
-          </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card>
+            <Card bg='dark' text='white' border="success" className="justify-content-center">
               <Card.Body>
+                <Card.Header className="text-center fs-5">Login to your account</Card.Header>
                 <TextField id="signin-form-email" name="email" placeholder="E-mail address" />
                 <TextField id="signin-form-password" name="password" placeholder="Password" type="password" />
                 <ErrorsField />
@@ -57,7 +55,7 @@ const SignIn = () => {
               </Card.Body>
             </Card>
           </AutoForm>
-          <Alert variant="light">
+          <Alert variant="success">
             <Link to="/signup">Click here to Register</Link>
           </Alert>
           {error === '' ? (

@@ -1,21 +1,19 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container } from 'react-bootstrap';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 const Footer = () => (
   <footer className="mt-auto py-3 bg-light">
     <Container>
-      <Row>
-        <Col>
-          <h4>About Us</h4>
-        </Col>
-        <Col>
-          <h4>Careers</h4>
-        </Col>
-        <Col>
-          <h4>Gift Cards</h4>
-        </Col>
-      </Row>
+      <Col className="text-center" style={{ color: 'black' }}>
+        Department of Information and Computer Sciences
+        {' '}
+        <br />
+        University of Hawaii
+        <br />
+        Honolulu, HI 96822
+        {' '}
+      </Col>
     </Container>
   </footer>
 );
