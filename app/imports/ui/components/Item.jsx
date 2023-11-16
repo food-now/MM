@@ -15,20 +15,23 @@ const Item = ({ item }) => (
       <Card.Subtitle>{item.price}</Card.Subtitle>
     </Card.Header>
     <Card.Body>
-      <Card.Text>{item.description}</Card.Text>
+      <Card.Text>{item.allergens}</Card.Text>
       {/* <AddNote owner={vendor.owner} contactID={vendor._id} /> */}
       <Link to={`/edit/${item._id}`}>Edit</Link>
     </Card.Body>
   </Card>
 );
 
+// TODO: WE NEED TO IMPLEMENT ITEMS PROPERLY (-->KAI)
 Item.propTypes = {
   item: PropTypes.shape({
     item: PropTypes.string,
     price: PropTypes.string,
     image: PropTypes.string,
-    description: PropTypes.string,
+    allergens: [PropTypes.string],
     owner: PropTypes.string,
+    special: Boolean,
+    specialDate: Date,
     _id: PropTypes.string,
   }).isRequired,
 };
