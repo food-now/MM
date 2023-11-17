@@ -4,6 +4,7 @@ import SimpleSchema from 'simpl-schema';
 /**
  * The StuffsCollection. It encapsulates state and variable values for stuff.
  */
+
 class VendorCollection {
   constructor() {
     // The name of this collection.
