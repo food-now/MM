@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Container, Card, Row, Image } from 'react-bootstrap';
+import InteractiveMap from '../components/InteractiveMap';
 
 const Landing = () => (
 
@@ -67,6 +68,7 @@ const Landing = () => (
       </Container>
 
     </div>
+    <InteractiveMap />
   </div>
 );
 
