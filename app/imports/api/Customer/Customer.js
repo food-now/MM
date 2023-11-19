@@ -5,19 +5,17 @@ import SimpleSchema from 'simpl-schema';
  * The StuffsCollection. It encapsulates state and variable values for stuff.
  */
 
-class VendorCollection {
+class CustomerCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'VendorCollection';
+    this.name = 'CustomerCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      vendorName: String,
+      customerName: String,
       owner: String,
-      address: String,
-      weblink: String,
-      logo: String,
+      profilePic: String,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
@@ -31,4 +29,4 @@ class VendorCollection {
  * The singleton instance of the StuffsCollection.
  * @type {VendorCollection}
  */
-export const Vendors = new VendorCollection();
+export const Customers = new CustomerCollection();

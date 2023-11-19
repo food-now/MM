@@ -1,6 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
+import { Customers } from '../../api/Customer/Customer';
+import { Vendors } from '../../api/Vendor/Vendor';
+import { Admins } from '../../api/Admin/Admin';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
@@ -17,6 +20,28 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 Meteor.publish(Stuffs.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Stuffs.collection.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish(Customers.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Customers.collection.find();
+  }
+  console.log('Ready for pub!');
+  return this.ready();
+});
+
+Meteor.publish(Vendors.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Vendors.collection.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish(Admins.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Admins.collection.find();
   }
   return this.ready();
 });
