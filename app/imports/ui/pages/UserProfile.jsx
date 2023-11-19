@@ -44,7 +44,7 @@ const UserProfile = () => {
 
     // Assuming 'customer' is the default role
     return 'Customer';
-  }
+  };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   return (
