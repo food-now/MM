@@ -26,8 +26,14 @@ class MenuItemsCollection {
        All fields are required unless specified otherwise. */
     this.schema = new SimpleSchema(
       {
-        owner: String,
-        dateCreated: Date,
+        owner: {
+          type: String,
+          required: false,
+        },
+        dateCreated: {
+          type: Date,
+          required: false,
+        },
         vendorName: {
           type: String,
           allowedValues: vendors,
@@ -39,13 +45,22 @@ class MenuItemsCollection {
           min: 0.00,
           max: 1000.00,
         },
-        allergens: [String],
-        daysOfWeekAvaliable: [String],
+        allergens: {
+          type: String,
+          required: false,
+        },
+        daysOfWeekAvaliable: {
+          type: String,
+          required: false,
+        },
         special: {
           type: Boolean,
           required: false,
         },
-        specialDate: Date,
+        specialDate: {
+          type: Date,
+          required: false,
+        },
         image: {
           type: String,
           defaultValue: '',

@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 // import SimpleSchema from 'simpl-schema';
-import SimpleSchema from 'simpl-schema';
+// import SimpleSchema from 'simpl-schema';
 import { MenuItems } from '../../api/MenuItem/MenuItem';
 
 const vendors = ['test1', 'test2', 'test3'];
@@ -21,39 +21,7 @@ allergen.forEach(function (element) {
 });
 // Create a schema to specify the structure of the data to appear in the form.
 // TODO: CREATE APPLY EVERYTHING FROM SCHEMA INTO LIST
-const formSchema = new SimpleSchema(
-  {
-    // owner: String,
-    // dateCreated: Date,
-    vendorName: {
-      type: String,
-      allowedValues: vendors,
-      defaultValue: vendors[0],
-    },
-    name: String,
-    price: {
-      type: Number,
-      min: 0.00,
-      max: 1000.00,
-    },
-    // allergens: [String],
-    // daysOfWeekAvaliable: [String],
-    special: {
-      type: Boolean,
-      required: false,
-    },
-    specialDate: {
-      type: Date,
-      required: false,
-    },
-    image: {
-      type: String,
-      defaultValue: '',
-      required: false,
-    },
-  },
-  { requiredByDefault: true },
-);
+const formSchema = MenuItems.schema;
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
@@ -62,12 +30,13 @@ const AddItem = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { vendorName, name, price, special, specialDate, image } = data;
+    const { vendorName, name, price, special, specialDate, image, allergens } = data;
     const owner = Meteor.user().username;
-    // TODO: DATE CREATED = TODAY'S DATE (PROBABLY A BUILT IN FEATURE FOR FETCHING THIS INFO)
+    const dateCreated = new Date();
+    // console.log(dateCreated);
     // TODO: IMPLEMENT THE REST OF THE INFO FOR INSERTION OR MAKE THINGS OPTIONAL FOR TESTING
     MenuItems.collection.insert(
-      { vendorName, name, price, special, specialDate, image, owner },
+      { vendorName, name, price, special, dateCreated, image, owner, specialDate, allergens },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
