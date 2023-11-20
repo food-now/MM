@@ -72,8 +72,8 @@ class MenuItemsCollection {
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions
-    this.userPublicationName = `${this.name}.publication.user`;
-    this.adminPublicationName = `${this.name}.publication.admin`;
+    this.defaultPublicationName = `${this.name}.publication.default`; // For both customers and admins.
+    this.vendorPublicationName = `${this.name}.publication.vendor`;
   }
 }
 
