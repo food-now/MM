@@ -35,7 +35,7 @@ if (Stuffs.collection.find().count() === 0) {
   }
 }
 
-// Initialize the StuffsCollection if empty.
+// Initialize the Customers Collection if empty.
 if (Customers.collection.find().count() === 0) {
   if (Meteor.settings.defaultCustomers) {
     console.log('Creating default customer data.');
@@ -43,18 +43,18 @@ if (Customers.collection.find().count() === 0) {
   }
 }
 
-// Initialize the StuffsCollection if empty.
+// Initialize the Vendors Collection if empty.
 if (Vendors.collection.find().count() === 0) {
-  if (Meteor.settings.defaultVendors) {
-    console.log('Creating default customer data.');
+  if (Meteor.settings.defaultVendorData) {
+    console.log('Creating default vendor data.');
     Meteor.settings.defaultVendors.forEach(data => addVendorData(data));
   }
 }
 
-// Initialize the StuffsCollection if empty.
+// Initialize the Admins Collection if empty.
 if (Admins.collection.find().count() === 0) {
   if (Meteor.settings.defaultAdmins) {
-    console.log('Creating default customer data.');
+    console.log('Creating default admin data.');
     Meteor.settings.defaultAdmins.forEach(data => addAdminData(data));
   }
 }
