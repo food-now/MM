@@ -5,30 +5,28 @@ import SimpleSchema from 'simpl-schema';
  * The StuffsCollection. It encapsulates state and variable values for stuff.
  */
 
-class VendorCollection {
+class AdminCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'VendorCollection';
+    this.name = 'AdminCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      vendorName: String,
+      adminName: String,
       owner: String,
-      address: String,
-      weblink: String,
-      logo: String,
+      profilePic: String,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions
-    this.defaultPublicationName = `${this.name}.publication.default`; // For both customers and admins.
-    this.vendorPublicationName = `${this.name}.publication.vendor`;
+    this.userPublicationName = `${this.name}.publication.user`;
+    this.adminPublicationName = `${this.name}.publication.admin`;
   }
 }
 
 /**
  * The singleton instance of the StuffsCollection.
- * @type {VendorCollection}
+ * @type {AdminCollection}
  */
-export const Vendors = new VendorCollection();
+export const Admins = new AdminCollection();
