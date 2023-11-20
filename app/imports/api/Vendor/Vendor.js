@@ -7,6 +7,7 @@ import { Meteor } from 'meteor/meteor';
 /**
  * The StuffsCollection. It encapsulates state and variable values for stuff.
  */
+
 class VendorCollection {
   constructor() {
     // The name of this collection.
@@ -33,10 +34,10 @@ class VendorCollection {
  * The singleton instance of the StuffsCollection.
  * @type {VendorCollection}
  */
-export const vendors = new VendorCollection();
+export const Vendors = new VendorCollection();
 
 // Define write restrictions to the vendors database collection.
-vendors.collection.allow({
+Vendors.collection.allow({
   // All of the parameter fields, such as userid and doc, are autofilled by meteor and are not from the clientside code. Client should use these functions as usual.
   // Doc is the document getting modified, userID is the logged in user.
   insert(userId, doc) {

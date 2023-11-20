@@ -1,7 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { MenuItems } from '../../api/MenuItem/MenuItem';
-import { vendors } from '../../api/Vendor/Vendor';
+import { Stuffs } from '../../api/stuff/Stuff';
+import { Customers } from '../../api/Customer/Customer';
+import { Vendors } from '../../api/Vendor/Vendor';
+import { Admins } from '../../api/Admin/Admin';
 
 /*    MenuItem publications   */
 
@@ -27,14 +30,14 @@ Meteor.publish(MenuItems.vendorPublicationName, function () {
   return this.ready();
 });
 
-/*    vendors publications   */
+/*    Vendors publications   */
 
 // Default-level publication for both customers and admins
 // If logged in with customer or admin role, then publish all vendors. Any filtering should be done on client.
 // Otherwise, publish nothing.
-Meteor.publish(vendors.defaultPublicationName, function () {
+Meteor.publish(Vendors.defaultPublicationName, function () {
   if (this.userId && (Roles.userIsInRole(this.userId, 'customer') || Roles.userIsInRole(this.userId, 'admin'))) {
-    return vendors.collection.find();
+    return Vendors.collection.find();
   }
   return this.ready();
 });
@@ -43,15 +46,34 @@ Meteor.publish(vendors.defaultPublicationName, function () {
 // If logged in and with vendor role, then publish vendors associated with the logged in vendor user.
 // Again, this publication is for filtration convenience, not security.
 // Otherwise, publish nothing.
-Meteor.publish(vendors.adminPublicationName, function () {
+Meteor.publish(Vendors.vendorPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'vendor')) {
     const username = Meteor.users.findOne(this.userId).username;
-    return vendors.collection.find({ owner: username });
+    return Vendors.collection.find({ owner: username });
   }
   return this.ready();
 });
 
-/* alanning:roles publication */
+/*    Customers publications   */
+
+Meteor.publish(Customers.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Customers.collection.find();
+  }
+  console.log('Ready for pub!');
+  return this.ready();
+});
+
+/*    Admins publications   */
+
+Meteor.publish(Admins.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Admins.collection.find();
+  }
+  return this.ready();
+});
+
+/*    alanning:roles publication    */
 
 // Recommended code to publish roles for each user.
 Meteor.publish(null, function () {

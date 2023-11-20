@@ -2,8 +2,9 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
-import { Button, Container, FormControl, Image, InputGroup, Nav, Navbar, NavDropdown, Form, FormCheck } from 'react-bootstrap';
+import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, PersonFill, PersonLinesFill, PersonPlusFill } from 'react-bootstrap-icons';
+import { Roles } from 'meteor/alanning:roles';
 
 const NavBar = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -27,6 +28,9 @@ const NavBar = () => {
               <Nav.Link id="add-stuff-nav" as={NavLink} to="/add" key="add">Add Item</Nav.Link>,
               <Nav.Link id="list-stuff-nav" as={NavLink} to="/list" key="list">Vendors and Items</Nav.Link>,
             ]) : ''}
+            {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+              <Nav.Link id="list-users-nav" as={NavLink} to="/user-list" key="admin">All Users</Nav.Link>
+            ) : ''}
             {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Nav.Link id="list-stuff-admin-nav" as={NavLink} to="/adminadd" key="admin">Add User</Nav.Link>
             ) : ''}
