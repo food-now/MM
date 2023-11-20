@@ -47,7 +47,10 @@ class MenuItemsCollection {
           type: Boolean,
           required: false,
         },
-        specialDate: Date,
+        specialDate: {
+          type: Date,
+          required: false,
+        },
         image: {
           type: String,
           defaultValue: '',
