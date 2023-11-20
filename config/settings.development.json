@@ -4,8 +4,9 @@
     "appSecret": "5f75f9c9-d5e3-4998-a751-ffa9730b3105"
   },
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" }
+    { "email": "admin", "password": "123", "role": "admin" },
+    { "email": "john", "password": "123", "role": "customer" },
+    { "email": "mcdonalds", "password": "123", "role": "vendor" }
   ],
 
   "defaultData": [
@@ -13,5 +14,17 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultVendorData": [
+    { "vendorName": "mcdonalds", "owner": "mcdonalds", "address": "123 poopoo street", "weblink": "mcdonalds.com", "logo": "" }
+  ],
+
+  "defaultMenuItemData": [
+    { "owner": "mcdonalds", "dateCreated": 1700466665, "vendorName": "mcdonalds", "name": "big mac", "price": "4.99", "allergens": ["gluten", "dairy"],
+      "daysOfWeekAvaliable": ["m", "t", "w", "th", "f", "s", "su"], "special": false , "specialDate": "",
+      "image": ""
+    }
   ]
+
 }
