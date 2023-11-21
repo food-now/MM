@@ -33,7 +33,7 @@ if (Customers.collection.find().count() === 0) {
 if (Vendors.collection.find().count() === 0) {
   if (Meteor.settings.defaultVendorData) {
     console.log('Creating default vendor data.');
-    Meteor.settings.defaultVendors.forEach(data => addVendorData(data));
+    Meteor.settings.defaultVendorData.forEach(data => addVendorData(data));
   }
 }
 
