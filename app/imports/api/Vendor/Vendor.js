@@ -27,6 +27,7 @@ class VendorCollection {
     // Define names for publications and subscriptions
     this.defaultPublicationName = `${this.name}.publication.default`; // For both customers and admins.
     this.vendorPublicationName = `${this.name}.publication.vendor`;
+    this.adminPublicationName = `${this.name}.publication.admin`;
   }
 }
 

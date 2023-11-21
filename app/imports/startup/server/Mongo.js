@@ -6,12 +6,6 @@ import { Admins } from '../../api/Admin/Admin';
 
 /* eslint-disable no-console */
 
-// Initialize the database with a default data document.
-const addData = (data) => {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
-  Stuffs.collection.insert(data);
-};
-
 const addCustomerData = (data) => {
   console.log(`  Adding: ${data.customerName} (${data.owner})`);
   Customers.collection.insert(data);
@@ -26,14 +20,6 @@ const addAdminData = (data) => {
   console.log(`  Adding: ${data.adminName} (${data.owner})`);
   Admins.collection.insert(data);
 };
-
-// Initialize the StuffsCollection if empty.
-if (Stuffs.collection.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
-    console.log('Creating default data.');
-    Meteor.settings.defaultData.forEach(data => addData(data));
-  }
-}
 
 // Initialize the Customers Collection if empty.
 if (Customers.collection.find().count() === 0) {

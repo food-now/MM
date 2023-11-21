@@ -73,6 +73,13 @@ Meteor.publish(Admins.adminPublicationName, function () {
   return this.ready();
 });
 
+Meteor.publish(Vendors.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Vendors.collection.find();
+  }
+  return this.ready();
+});
+
 /*    alanning:roles publication    */
 
 // Recommended code to publish roles for each user.

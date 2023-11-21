@@ -28,7 +28,7 @@ const AdminList = () => {
       <Row className="justify-content-center">
         <Col md={7}>
           <Col className="text-center">
-            <h2>All Vendor Accounts</h2>
+            <h2>All Admin Accounts</h2>
           </Col>
           <Table striped bordered hover>
             <thead>

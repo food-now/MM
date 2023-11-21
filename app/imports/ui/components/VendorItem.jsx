@@ -22,7 +22,7 @@ const VendorItem = ({ vendor }) => (
 VendorItem.propTypes = {
   vendor: PropTypes.shape({
     vendorName: PropTypes.string,
-    owner: PropTypes.number,
+    owner: PropTypes.string,
     address: PropTypes.string,
     _id: PropTypes.string,
     weblink: PropTypes.string,
