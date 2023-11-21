@@ -27,6 +27,6 @@ class CustomerCollection {
 
 /**
  * The singleton instance of the StuffsCollection.
- * @type {VendorCollection}
+ * @type {CustomerCollection}
  */
 export const Customers = new CustomerCollection();

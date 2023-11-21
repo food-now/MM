@@ -20,7 +20,10 @@ class VendorCollection {
       owner: String,
       address: String,
       weblink: String,
-      logo: String,
+      logo: {
+        type: String,
+        required: false,
+      },
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
