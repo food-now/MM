@@ -29,7 +29,7 @@ const InteractiveMap = () => {
   }, []); // Empty dependency array ensures useEffect runs once
 
   return (
-    <div id="map" style={{ height: '1000px', width: '800px' }}></div>
+    <div id="map" style={{ height: '1000px', width: '800px' }} />
   );
 };
 
