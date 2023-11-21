@@ -40,9 +40,9 @@ const App = () => {
           <Route path="/signout" element={<SignOut />} />
           <Route path="/home" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
-          <Route path="/list" element={<ProtectedRoute><AllVendors /></ProtectedRoute>} />
+          <Route path="/vendorsanditems" element={<ProtectedRoute><AllVendors /></ProtectedRoute>} />
           <Route path="/user-list" element={<ProtectedRoute><UserList /></ProtectedRoute>} />
-          <Route path="/add" element={<ProtectedRoute><AddItem /></ProtectedRoute>} />
+          <Route path="/additem" element={<ProtectedRoute><AddItem /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/adminadd" element={<AdminProtectedRoute ready={ready}><AddUsersAdmin /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />

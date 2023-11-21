@@ -25,8 +25,8 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="link2 me-auto justify-content-start">
             {currentUser ? ([
-              <Nav.Link id="add-stuff-nav" as={NavLink} to="/add" key="add">Add Item</Nav.Link>,
-              <Nav.Link id="list-stuff-nav" as={NavLink} to="/list" key="list">Vendors and Items</Nav.Link>,
+              <Nav.Link id="add-stuff-nav" as={NavLink} to="/additem" key="add">Add Item</Nav.Link>,
+              <Nav.Link id="list-stuff-nav" as={NavLink} to="/vendorsanditems" key="vendors">Vendors and Items</Nav.Link>,
             ]) : ''}
             {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Nav.Link id="list-users-nav" as={NavLink} to="/user-list" key="admin">All Users</Nav.Link>
