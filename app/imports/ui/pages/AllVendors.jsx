@@ -3,9 +3,12 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import LoadingSpinner from '../components/LoadingSpinner';
-import VendorsCard from '../components/VendorsCard';
+// import VendorsCard from '../components/VendorsCard';
 import InteractiveMap from '../components/InteractiveMap';
 import { Vendors } from '../../api/Vendor/Vendor';
+// import { Stuffs } from '../../api/stuff/Stuff';
+import { MenuItems } from '../../api/MenuItem/MenuItem';
+import VendorsCard from '../components/VendorsCard';
 
 const testData = [
   {
@@ -40,8 +43,24 @@ const testData = [
 ];
 
 const ListStuff = () => {
-
-  return (
+  const { ready, vendors, items } = useTracker(() => {
+    // Note that this subscription will get cleaned up
+    // when your component is unmounted or deps change.
+    // Get access to Stuff documents.
+    const subscription = Meteor.subscribe(Vendors.defaultPublicationName);
+    const subscription2 = Meteor.subscribe(MenuItems.defaultPublicationName);
+    // Determine if the subscription is ready
+    const rdy = subscription.ready() && subscription2;
+    // Get the Stuff documents
+    const vendorsCol = Vendors.collection.find({}).fetch();
+    const foodItems = MenuItems.collection.find({}).fetch();
+    return {
+      vendors: vendorsCol,
+      items: foodItems,
+      ready: rdy,
+    };
+  }, []);
+  return (ready ? (
     <Container fluid className="py-5">
       <Row>
         {/* Left Block for Filters */}
@@ -55,7 +74,7 @@ const ListStuff = () => {
         <Col md={6}>
           {/* Your main section components go here */}
           <h1>Vendors Available at UH Manoa</h1>
-          {testData.map((vendor, index) => (
+          {vendors.map((vendor, index) => (
             <VendorsCard vendor={vendor} key={index} />
           ))}
           {/* Add your main section components or content here */}
@@ -70,7 +89,7 @@ const ListStuff = () => {
         </Col>
       </Row>
     </Container>
-  );
+  ) : <LoadingSpinner />);
 };
 
 export default ListStuff;
