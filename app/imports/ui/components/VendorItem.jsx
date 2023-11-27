@@ -2,31 +2,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const VendorItem = ({ vendor }) => (
+const VendorItem = ({ menuItem }) => (
   <tr>
-    <td>{vendor.vendorName}</td>
-    <td>{vendor.owner}</td>
-    <td>{vendor.address}</td>
-    <td>
-      <a href={vendor.weblink} target="_blank" rel="noreferrer">
-        Website
-      </a>
-    </td>
-    <td>
-      <img src={vendor.logo} alt="Vendor Logo" style={{ width: '75px', height: '75px' }} />
-    </td>
+    <td>{menuItem.name}</td>
+    <td>{menuItem.price}$</td>
+    <td>{menuItem.dateCreated.toDateString()}</td>
+    <td>{menuItem.image}</td>
   </tr>
 );
 
 // Require a document to be passed to this component.
 VendorItem.propTypes = {
-  vendor: PropTypes.shape({
-    vendorName: PropTypes.string,
-    owner: PropTypes.string,
-    address: PropTypes.string,
-    _id: PropTypes.string,
-    weblink: PropTypes.string,
-    logo: PropTypes.string,
+  menuItem: PropTypes.shape({
+    dateCreated: {
+      type: Date,
+      required: false,
+    },
+    name: String,
+    price: {
+      type: Number,
+      min: 0.00,
+      max: 1000.00,
+    },
+    image: {
+      type: String,
+      defaultValue: '',
+      required: false,
+    },
   }).isRequired,
 };
 

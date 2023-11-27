@@ -10,40 +10,8 @@ import { Vendors } from '../../api/Vendor/Vendor';
 import { MenuItems } from '../../api/MenuItem/MenuItem';
 import VendorsCard from '../components/VendorsCard';
 
-const testData = [
-  {
-    vendorName: 'Vendor 1',
-    owner: 'John Doe',
-    address: '123 Main Street, Cityville',
-    weblink: 'http://www.vendor1.com',
-    logo: 'https://media-cldnry.s-nbcnews.com/image/upload/newscms/2021_34/1765653/squareat-inline-02-khu-210825.png',
-  },
-  {
-    vendorName: 'Vendor 2',
-    owner: 'Jane Smith',
-    address: '456 Market Street, Townsville',
-    weblink: 'http://www.vendor2.com',
-    logo: 'https://media-cldnry.s-nbcnews.com/image/upload/newscms/2021_34/1765653/squareat-inline-02-khu-210825.png',
-  },
-  {
-    vendorName: 'Vendor 2',
-    owner: 'Jane Smith',
-    address: '456 Market Street, Townsville',
-    weblink: 'http://www.vendor2.com',
-    logo: 'https://media-cldnry.s-nbcnews.com/image/upload/newscms/2021_34/1765653/squareat-inline-02-khu-210825.png',
-  },
-  {
-    vendorName: 'Vendor 2',
-    owner: 'Jane Smith',
-    address: '456 Market Street, Townsville',
-    weblink: 'http://www.vendor2.com',
-    logo: 'https://media-cldnry.s-nbcnews.com/image/upload/newscms/2021_34/1765653/squareat-inline-02-khu-210825.png',
-  },
-  // Add more test data as needed
-];
-
 const ListStuff = () => {
-  const { ready, vendors, items } = useTracker(() => {
+  const { ready, vendors } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
