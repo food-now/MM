@@ -13,12 +13,6 @@ class MenuItemsCollection {
     this.collection = new Mongo.Collection(this.name);
 
     // we are going to want to subscribe to vendors and filter out all vendor names
-    const vendors = ['test1', 'test2', 'test3'];
-    const vendorList = [];
-    vendors.forEach(function (element) {
-      vendorList.push({ label: element, value: element });
-    });
-
     const allergen = ['a', 'b', 'c'];
     const allergenList = [];
     allergen.forEach(function (element) {
@@ -38,8 +32,6 @@ class MenuItemsCollection {
         },
         vendorName: {
           type: String,
-          allowedValues: vendors,
-          defaultValue: vendors[0],
         },
         name: String,
         price: {
