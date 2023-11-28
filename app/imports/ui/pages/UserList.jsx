@@ -1,8 +1,8 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 import VendorList from '../components/VendorList';
 import CustomerList from '../components/CustomerList';
 import AdminList from '../components/AdminList';
-import { Container } from 'react-bootstrap';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const UserList = () => (

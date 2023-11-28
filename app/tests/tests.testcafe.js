@@ -6,6 +6,7 @@ import { addItemPage } from './AddItem.page';
 import { allVendorsPage } from './allVendors.page';
 import { addUserPage } from './addUser.page';
 import { userProfilePage } from './userProfile.page';
+import { allUsersPage } from './allUsers.page';
 
 /* global fixture:false, test:false */
 
@@ -52,7 +53,7 @@ test('Test that All Users page shows up', async (testController) => {
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.isLoggedIn(testController, credentials.username);
   await navBar.gotoAllUsersPage(testController);
-  await landingPage.isDisplayed(testController);
+  await allUsersPage.isDisplayed(testController);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
