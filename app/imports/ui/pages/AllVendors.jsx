@@ -29,7 +29,7 @@ const ListStuff = () => {
     };
   }, []);
   return (ready ? (
-    <Container fluid className="py-5">
+    <Container id="AllVendors-page" fluid className="py-5">
       <Row>
         {/* Left Block for Filters */}
         <Col md={2}>

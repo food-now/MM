@@ -135,7 +135,7 @@ const AddUsers = () => {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
   return (
-    <Container className="py-3">
+    <Container id="AddUser-page" className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>

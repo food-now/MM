@@ -21,6 +21,32 @@ class NavBar {
     await testController.click('#login-dropdown-sign-in');
   }
 
+  async gotoAddItemPage(testController) {
+    await testController.click('#AddItem');
+  }
+
+  async gotoAllVendorsPage(testController) {
+    await testController.click('#AllVendors');
+  }
+
+  async gotoAllUsersPage(testController) {
+    await testController.click('#AllUsers');
+  }
+
+  async gotoAddUsersPage(testController) {
+    await testController.click('#AddUser');
+  }
+
+  async gotoUsersPage(testController) {
+    const visible = await Selector('#basic-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.expect(Selector('#navbar-current-user').exists).ok();
+    await testController.click('#navbar-current-user');
+    await testController.click('#userProfile');
+  }
+
   /** Check that the specified user is currently logged in. */
   async isLoggedIn(testController, username) {
     const visible = await Selector('#basic-navbar-nav').visible;

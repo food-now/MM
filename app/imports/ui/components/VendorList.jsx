@@ -23,7 +23,7 @@ const VendorList = () => {
       ready: rdy,
     };
   }, []);
-  console.log('ready', ready, vendors);
+  // console.log('ready', ready, vendors);
   return (ready ? (
     <Container className="py-3">
       <Row className="justify-content-center">
