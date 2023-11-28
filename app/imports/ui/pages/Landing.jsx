@@ -20,6 +20,7 @@ const Landing = () => (
                 alt="logo"
                 style={{ width: '100px', height: '100px' }}
               />
+              !
             </h1>
             <h2>Looking for some grindz on Campus but don&apos;t where to go? We can help!</h2>
             <h3 className="pt-2">Food now allows you to search by....</h3>
