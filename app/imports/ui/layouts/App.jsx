@@ -18,6 +18,9 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import AddItem from '../pages/AddItem';
 import UserProfile from '../pages/UserProfile';
 import HomePage from '../pages/HomePage';
+import AllVendors from '../pages/AllVendors';
+import UserList from '../pages/UserList';
+import ShowVendor from '../pages/ShowVendor';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -38,9 +41,11 @@ const App = () => {
           <Route path="/signout" element={<SignOut />} />
           <Route path="/home" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
-          <Route path="/list" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+          <Route path="/list" element={<ProtectedRoute><AllVendors /></ProtectedRoute>} />
+          <Route path="/user-list" element={<ProtectedRoute><UserList /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddItem /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
+          <Route path="/show-vendor/:_id" element={<ProtectedRoute><ShowVendor /></ProtectedRoute>} />
           <Route path="/adminadd" element={<AdminProtectedRoute ready={ready}><AddUsersAdmin /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />

@@ -1,5 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
+import { Roles } from 'meteor/alanning:roles';
+import { Meteor } from 'meteor/meteor';
 /**
  * The MenuItemsCollection. It encapsulates state and variable values for menu items.
  */
@@ -11,12 +13,6 @@ class MenuItemsCollection {
     this.collection = new Mongo.Collection(this.name);
 
     // we are going to want to subscribe to vendors and filter out all vendor names
-    const vendors = ['test1', 'test2', 'test3'];
-    const vendorList = [];
-    vendors.forEach(function (element) {
-      vendorList.push({ label: element, value: element });
-    });
-
     const allergen = ['a', 'b', 'c'];
     const allergenList = [];
     allergen.forEach(function (element) {
@@ -26,12 +22,16 @@ class MenuItemsCollection {
        All fields are required unless specified otherwise. */
     this.schema = new SimpleSchema(
       {
-        owner: String,
-        dateCreated: Date,
+        owner: {
+          type: String,
+          required: false,
+        },
+        dateCreated: {
+          type: Date,
+          required: false,
+        },
         vendorName: {
           type: String,
-          allowedValues: vendors,
-          defaultValue: vendors[0],
         },
         name: String,
         price: {
@@ -39,13 +39,22 @@ class MenuItemsCollection {
           min: 0.00,
           max: 1000.00,
         },
-        allergens: [String],
-        daysOfWeekAvaliable: [String],
+        allergens: {
+          type: String,
+          required: false,
+        },
+        daysOfWeekAvaliable: {
+          type: String,
+          required: false,
+        },
         special: {
           type: Boolean,
           required: false,
         },
-        specialDate: Date,
+        specialDate: {
+          type: Date,
+          required: false,
+        },
         image: {
           type: String,
           defaultValue: '',
@@ -57,8 +66,8 @@ class MenuItemsCollection {
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions
-    this.userPublicationName = `${this.name}.publication.user`;
-    this.adminPublicationName = `${this.name}.publication.admin`;
+    this.defaultPublicationName = `${this.name}.publication.default`; // For both customers and admins.
+    this.vendorPublicationName = `${this.name}.publication.vendor`;
   }
 }
 
@@ -67,3 +76,25 @@ class MenuItemsCollection {
  * @type {MenuItemsCollection}
  */
 export const MenuItems = new MenuItemsCollection();
+
+// Define write restrictions to the MenuItems database collection.
+MenuItems.collection.allow({
+  // All of the parameter fields, such as userid and doc, are autofilled by meteor and are not from the clientside code. Client should use these functions as usual.
+  // Doc is the document getting modified, userID is the logged in user.
+  insert(userId, doc) {
+    // The user must be logged in and the document must be owned by the user. Admins are an exception.
+    return userId && (doc.owner === Meteor.users.findOne(userId).username || Roles.userIsInRole(userId, 'admin'));
+  },
+
+  update(userId, doc) {
+    // User must be logged in. Can only change your own documents. Admins are an exception.
+    return userId && (doc.owner === Meteor.users.findOne(userId).username || Roles.userIsInRole(userId, 'admin'));
+  },
+
+  remove(userId, doc) {
+    // User must be logged in. Can only remove your own documents. Admins are an exception.
+    return userId && (doc.owner === Meteor.users.findOne(userId).username || Roles.userIsInRole(userId, 'admin'));
+  },
+
+  fetch: ['owner'],
+});

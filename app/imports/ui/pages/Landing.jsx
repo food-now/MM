@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Container, Row, Image } from 'react-bootstrap';
+import InteractiveMap from '../components/InteractiveMap';
 
 const Landing = () => (
 
@@ -28,8 +29,8 @@ const Landing = () => (
 
         <Row className="align-middle text-center">
           <Col xs={4}>
-            <div className="pt-2">
-              <img src="images/BeFunky-collage.jpg" className="rounded img-fluid" alt="VendorCollage" />
+            <div className="pt-2" >
+              <img src="images/BeFunky-collage.jpg" class="rounded img-fluid"  alt="VendorCollage"/>
               <h1>Vendor List</h1>
               <h5>List of all food options on campus. </h5>
             </div>
@@ -37,7 +38,7 @@ const Landing = () => (
 
           <Col xs={4}>
             <div className="pt-2">
-              <img src="images/fsvendormap.jpg" className="rounded img-fluid" alt="VendorMapImg" />
+              <img src="images/fsvendormap.jpg" className="rounded img-fluid" alt="VendorMapImg"/>
               <h1>Vendor Map</h1>
               <h5>View food options on Campus Map.</h5>
             </div>
@@ -45,7 +46,7 @@ const Landing = () => (
 
           <Col xs={4}>
             <div className="pt-2">
-              <img src="images/Foodlnl.jpg" className="rounded img-fluid" alt="CusineTypeImage" />
+              <img src="images/Foodlnl.jpg" className="rounded img-fluid" alt="CusineTypeImage"/>
               <h1>Cuisine Type</h1>
               <h5>Search vendors by cuisine type.</h5>
             </div>
@@ -68,6 +69,7 @@ const Landing = () => (
       </Container>
 
     </div>
+    <InteractiveMap />
   </div>
 );
 

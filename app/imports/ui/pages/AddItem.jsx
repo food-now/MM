@@ -5,30 +5,28 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 // import SimpleSchema from 'simpl-schema';
+// import SimpleSchema from 'simpl-schema';
+import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema from 'simpl-schema';
 import { MenuItems } from '../../api/MenuItem/MenuItem';
+import { Vendors } from '../../api/Vendor/Vendor';
+import LoadingSpinner from '../components/LoadingSpinner';
 
-const vendors = ['test1', 'test2', 'test3'];
-const vendorList = [];
-vendors.forEach(function (element) {
-  vendorList.push({ label: element, value: element });
-});
-
-const allergen = ['a', 'b', 'c'];
-const allergenList = [];
-allergen.forEach(function (element) {
-  allergenList.push({ label: element, value: element });
-});
 // Create a schema to specify the structure of the data to appear in the form.
 // TODO: CREATE APPLY EVERYTHING FROM SCHEMA INTO LIST
+// const list = ['test1', 'test2', 'test3'];
 const formSchema = new SimpleSchema(
   {
-    // owner: String,
-    // dateCreated: Date,
+    owner: {
+      type: String,
+      required: false,
+    },
+    dateCreated: {
+      type: Date,
+      required: false,
+    },
     vendorName: {
       type: String,
-      allowedValues: vendors,
-      defaultValue: vendors[0],
     },
     name: String,
     price: {
@@ -36,8 +34,14 @@ const formSchema = new SimpleSchema(
       min: 0.00,
       max: 1000.00,
     },
-    // allergens: [String],
-    // daysOfWeekAvaliable: [String],
+    allergens: {
+      type: String,
+      required: false,
+    },
+    daysOfWeekAvaliable: {
+      type: String,
+      required: false,
+    },
     special: {
       type: Boolean,
       required: false,
@@ -56,18 +60,34 @@ const formSchema = new SimpleSchema(
 );
 
 const bridge = new SimpleSchema2Bridge(formSchema);
-
 /* Renders the AddStuff page for adding a document. */
 const AddItem = () => {
 
+  const { ready, vendors } = useTracker(() => {
+    // Note that this subscription will get cleaned up
+    // when your component is unmounted or deps change.
+    // Get access to Stuff documents.
+    const subscription = Meteor.subscribe(Vendors.defaultPublicationName);
+    // Determine if the subscription is ready
+    const rdy = subscription.ready();
+    // Get the Stuff documents
+    const vendorsCol = Vendors.collection.find({}).fetch();
+    // console.log(vendorsCol);
+    return {
+      vendors: vendorsCol.map((vendor, index) => ({ value: vendor.vendorName, label: vendor.vendorName, key: index })),
+      ready: rdy,
+    };
+  }, []);
+
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { vendorName, name, price, special, specialDate, image } = data;
+    const { vendorName, name, price, special, specialDate, image, allergens } = data;
     const owner = Meteor.user().username;
-    // TODO: DATE CREATED = TODAY'S DATE (PROBABLY A BUILT IN FEATURE FOR FETCHING THIS INFO)
+    const dateCreated = new Date();
+    // console.log(dateCreated);
     // TODO: IMPLEMENT THE REST OF THE INFO FOR INSERTION OR MAKE THINGS OPTIONAL FOR TESTING
     MenuItems.collection.insert(
-      { vendorName, name, price, special, specialDate, image, owner },
+      { vendorName, name, price, special, dateCreated, image, owner, specialDate, allergens },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -81,7 +101,7 @@ const AddItem = () => {
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
-  return (
+  return (ready ? (
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
@@ -92,7 +112,7 @@ const AddItem = () => {
                 <TextField name="name" />
                 <NumField name="price" decimal={2} />
                 <TextField name="image" />
-                <SelectField name="vendorName" />
+                <SelectField name="vendorName" options={vendors} transform={value => value} />
                 <BoolField name="special" />
                 <DateField name="specialDate" />
                 { /* <SelectField name="allergens" choices={allergenList} /> */ }
@@ -104,7 +124,7 @@ const AddItem = () => {
         </Col>
       </Row>
     </Container>
-  );
+  ) : <LoadingSpinner />);
 };
 
 export default AddItem;

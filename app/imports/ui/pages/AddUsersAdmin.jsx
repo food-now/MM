@@ -2,22 +2,25 @@ import React, { useState } from 'react';
 import { Card, Col, Container, FormSelect, Row } from 'react-bootstrap';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
-import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { vendors } from '../../api/Vendor/Vendor';
+import { Vendors } from '../../api/Vendor/Vendor';
+import { Customers } from '../../api/Customer/Customer';
+import { Admins } from '../../api/Admin/Admin';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   /* For Users */
   /* For Vendors */
-  vendorName: String,
-  owner: String,
-  address: String,
-  weblink: String,
-  logo: String,
   email: String,
   password: String,
+  vendorName: { type: String, optional: true },
+  customerName: { type: String, optional: true },
+  adminName: { type: String, optional: true },
+  address: { type: String, optional: true },
+  weblink: { type: String, optional: true },
+  logo: { type: String, optional: true },
+  profilePic: { type: String, optional: true },
   /* For Admin */
 });
 
@@ -36,8 +39,10 @@ const AddUsers = () => {
     if (selectedOption === '1') {
       return (
         <>
+          <TextField name="customerName">Customer Name</TextField>
           <TextField name="email">Email</TextField>
           <TextField name="password">Password</TextField>
+          <TextField name="profilePic">Profile Picture</TextField>
         </>
       );
     } if (selectedOption === '2') {
@@ -54,8 +59,10 @@ const AddUsers = () => {
     } if (selectedOption === '3') {
       return (
         <>
+          <TextField name="adminName">Admin Name</TextField>
           <TextField name="email">Email</TextField>
           <TextField name="password">Password</TextField>
+          <TextField name="profilePic">Profile Picture</TextField>
         </>
       );
     }
@@ -63,21 +70,66 @@ const AddUsers = () => {
     return null;
   };
 
+  const handleInsertResult = (error, formRef) => {
+    if (error) {
+      swal('Error', error.message, 'error');
+    } else {
+      swal('Success', 'User added successfully', 'success');
+      formRef.reset();
+    }
+  };
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { vendorName, address, weblink, logo, email, password } = data;
-    const owner = Meteor.user().username;
-    vendors.collection.insert(
-      { vendorName, address, weblink, logo, owner, email, password },
-      (error) => {
-        if (error) {
-          swal('Error', error.message, 'error');
-        } else {
-          swal('Success', 'User added successfully', 'success');
-          formRef.reset();
-        }
-      },
-    );
+    const { email, password } = data;
+
+    if (selectedOption === '1') {
+      // Customer or Admin
+      const { customerName, profilePic } = data;
+      const owner = email; // Use the email as the owner
+      const userData = { owner, email, password, customerName, profilePic };
+
+      // Check if required fields are filled
+      if (!customerName || !profilePic) {
+        swal('Error', 'Please fill in all customer-specific fields', 'error');
+        return;
+      }
+
+      // Insert into collection using userData
+      Customers.collection.insert(userData, (error) => {
+        handleInsertResult(error, formRef);
+      });
+    } else if (selectedOption === '2') {
+      // Vendor
+      const { vendorName, address, weblink, logo } = data;
+      const owner = email; // Use the email as the owner
+      // Check if required fields are filled
+      if (!vendorName || !address || !weblink || !logo) {
+        swal('Error', 'Please fill in all vendor-specific fields', 'error');
+        return;
+      }
+      const vendorData = { vendorName, address, weblink, logo, owner, email, password };
+
+      // Insert into collection using vendorData
+      Vendors.collection.insert(vendorData, (error) => {
+        handleInsertResult(error, formRef);
+      });
+    } else if (selectedOption === '3') {
+      // Admin
+      const { adminName, profilePic } = data;
+      const owner = email; // Use the email as the owner
+      const adminData = { owner, email, password, profilePic, adminName };
+
+      // Check if required fields are filled
+      if (!adminName || !email || !password || !profilePic) {
+        swal('Error', 'Please fill in all admin-specific fields', 'error');
+        return;
+      }
+      // Insert into a different collection for admins
+      // Replace 'Admins' with the actual collection name for admins
+      Admins.collection.insert(adminData, (error) => {
+        handleInsertResult(error, formRef);
+      });
+    }
   };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms

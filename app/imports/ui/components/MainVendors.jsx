@@ -1,5 +1,4 @@
 import React from 'react';
-import VendorsCard from './VendorsCard';
 
 const MainVendors = () => {
   const vendorsData = [
@@ -31,9 +30,7 @@ const MainVendors = () => {
       <h2>Popular Vendors</h2>
       <div className="row">
         {vendorsData.map((vendor, index) => (
-          <div className="col-md-3" key={index}>
-            { /*<VendorsCard {...vendor} />*/ }
-          </div>
+          <div className="col-md-3" key={index} />
         ))}
       </div>
     </div>

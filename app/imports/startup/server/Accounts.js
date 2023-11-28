@@ -12,8 +12,12 @@ const createUser = (email, password, role) => {
     password: password,
   });
   if (role === 'admin') {
-    Roles.createRole(role, { unlessExists: true });
+    Roles.createRole(role, { unlessExists: true }); // Add role to Roles if doesn't exist
     Roles.addUsersToRoles(userID, 'admin');
+  }
+  if (role === 'customer') {
+    Roles.createRole(role, { unlessExists: true });
+    Roles.addUsersToRoles(userID, 'customer');
   }
   if (role === 'vendor') {
     Roles.createRole(role, { unlessExists: true });
