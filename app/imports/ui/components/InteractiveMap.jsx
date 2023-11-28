@@ -14,9 +14,18 @@ const InteractiveMap = () => {
       tileSize: 512,
       zoomOffset: -1,
     }).addTo(map);
+    // Icon
+    const defaultIcon = L.icon({
+      iconUrl: 'https://i.postimg.cc/c4LtHtJn/dish.png',
+      iconSize: [50, 50],
+      iconAnchor: [22, 94],
+      popupAnchor: [-3, -76],
+      shadowSize: [68, 95],
+      shadowAnchor: [22, 94],
+    });
 
     // Add a marker
-    L.marker([21.299, -157.816]).addTo(map).bindPopup('A simple popup');
+    L.marker([21.299, -157.816], { icon: defaultIcon }).addTo(map).bindPopup('<h1>Hello<h1>');
   }, []); // Empty dependency array ensures useEffect runs once
 
   return (

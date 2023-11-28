@@ -30,7 +30,7 @@ const VendorsCard = ({ vendor }) => (
             <strong>Address:</strong> {vendor.address}
           </Card.Text>
           <Card.Link href={vendor.weblink} target="_blank">
-            Website
+          <Card.Link href={`show-vendor/${vendor._id}`} target="_blank">
           </Card.Link>
         </div>
         <div>
@@ -48,7 +48,11 @@ VendorsCard.propTypes = {
     owner: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired,
     weblink: PropTypes.string.isRequired,
-    logo: PropTypes.string.isRequired,
+    logo: {
+      type: String,
+      required: false,
+    },
+    _id: PropTypes.string,
   }).isRequired,
 };
 export default VendorsCard;
