@@ -4,7 +4,7 @@ import { Col, Container, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import LoadingSpinner from './LoadingSpinner';
 import { Vendors } from '../../api/Vendor/Vendor';
-import VendorItem from './VendorItem';
+import VendorUser from './VendorUser';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const VendorList = () => {
@@ -42,7 +42,9 @@ const VendorList = () => {
               </tr>
             </thead>
             <tbody>
-              {vendors.map((vendor) => <VendorItem key={vendor._id} vendor={vendor} />)}
+              {vendors.map((vendor) => (
+                <VendorUser key={vendor._id} vendor={vendor} />
+              ))}
             </tbody>
           </Table>
         </Col>
