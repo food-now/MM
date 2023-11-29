@@ -7,6 +7,7 @@ import SimpleSchema from 'simpl-schema';
 import { Vendors } from '../../api/Vendor/Vendor';
 import { Customers } from '../../api/Customer/Customer';
 import { Admins } from '../../api/Admin/Admin';
+import { createUser } from '../../startup/both/createAUser';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -94,6 +95,8 @@ const AddUsers = () => {
         return;
       }
 
+      createUser(email, password, 'customer');
+
       // Insert into collection using userData
       Customers.collection.insert(userData, (error) => {
         handleInsertResult(error, formRef);
@@ -108,6 +111,7 @@ const AddUsers = () => {
         return;
       }
       const vendorData = { vendorName, address, weblink, logo, owner, email, password };
+
 
       // Insert into collection using vendorData
       Vendors.collection.insert(vendorData, (error) => {
