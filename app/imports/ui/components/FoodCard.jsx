@@ -15,6 +15,7 @@
 // export default FoodCard;
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const FoodCard = ({ name, description, image }) => (
   <div className="card">
@@ -25,5 +26,11 @@ const FoodCard = ({ name, description, image }) => (
     </div>
   </div>
 );
+
+FoodCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+};
 
 export default FoodCard;

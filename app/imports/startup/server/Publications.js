@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { MenuItems } from '../../api/MenuItem/MenuItem';
-import { Stuffs } from '../../api/stuff/Stuff';
 import { Customers } from '../../api/Customer/Customer';
 import { Vendors } from '../../api/Vendor/Vendor';
 import { Admins } from '../../api/Admin/Admin';
