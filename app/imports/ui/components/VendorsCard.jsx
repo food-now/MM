@@ -30,7 +30,7 @@ const VendorsCard = ({ vendor }) => (
             <strong>Address:</strong> {vendor.address}
           </Card.Text>
           <Card.Link href={`show-vendor/${vendor._id}`} target="_blank">
-            Website
+            View Menu
           </Card.Link>
         </div>
         <div>
