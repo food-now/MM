@@ -30,11 +30,14 @@ const NavBar = () => {
             {currentUser ? ([
               <Nav.Link id="AllVendors" as={NavLink} to="/list" key="list">All Vendors</Nav.Link>,
             ]) : ''}
-            {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+            {currentUser && Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Nav.Link id="AllUsers" as={NavLink} to="/user-list" key="admin">All Users</Nav.Link>
             ) : ''}
-            {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-              <Nav.Link id="AddUser" as={NavLink} to="/adminadd" key="admin">Add User</Nav.Link>
+            {currentUser && Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+              <Nav.Link id="AddUser" as={NavLink} to="/adminadd" key="admin2">Add User</Nav.Link>
+            ) : ''}
+            {currentUser && Roles.userIsInRole(Meteor.userId(), 'vendor') ? (
+              <Nav.Link id="AddItem" as={NavLink} to="/add" key="add2">Add Item</Nav.Link>
             ) : ''}
           </Nav>
           <Nav className="justify-content-end">
