@@ -20,4 +20,5 @@ export const createUser = (email, password, role) => {
     Roles.createRole(role, { unlessExists: true });
     Roles.addUsersToRoles(userID, 'vendor');
   }
+  return userID;
 };

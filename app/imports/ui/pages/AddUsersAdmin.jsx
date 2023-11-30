@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Card, Col, Container, FormSelect, Row } from 'react-bootstrap';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
@@ -7,7 +8,6 @@ import SimpleSchema from 'simpl-schema';
 import { Vendors } from '../../api/Vendor/Vendor';
 import { Customers } from '../../api/Customer/Customer';
 import { Admins } from '../../api/Admin/Admin';
-import { createUser } from '../../startup/both/createAUser';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -94,12 +94,17 @@ const AddUsers = () => {
         swal('Error', 'Please fill in all customer-specific fields', 'error');
         return;
       }
-
-      createUser(email, password, 'customer');
-
       // Insert into collection using userData
       Customers.collection.insert(userData, (error) => {
         handleInsertResult(error, formRef);
+      });
+
+      Meteor.call('createUserOnServer', email, password, 'customer', (error, result) => {
+        if (error) {
+          console.error('Error creating user:', error.reason);
+        } else {
+          console.log('User created successfully:', result);
+        }
       });
     } else if (selectedOption === '2') {
       // Vendor
@@ -112,10 +117,16 @@ const AddUsers = () => {
       }
       const vendorData = { vendorName, address, weblink, logo, owner, email, password };
 
-
       // Insert into collection using vendorData
       Vendors.collection.insert(vendorData, (error) => {
         handleInsertResult(error, formRef);
+      });
+      Meteor.call('createUserOnServer', email, password, 'vendor', (error, result) => {
+        if (error) {
+          console.error('Error creating user:', error.reason);
+        } else {
+          console.log('User created successfully:', result);
+        }
       });
     } else if (selectedOption === '3') {
       // Admin
@@ -132,6 +143,13 @@ const AddUsers = () => {
       // Replace 'Admins' with the actual collection name for admins
       Admins.collection.insert(adminData, (error) => {
         handleInsertResult(error, formRef);
+      });
+      Meteor.call('createUserOnServer', email, password, 'admin', (error, result) => {
+        if (error) {
+          console.error('Error creating user:', error.reason);
+        } else {
+          console.log('User created successfully:', result);
+        }
       });
     }
   };
