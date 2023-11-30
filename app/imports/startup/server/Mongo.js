@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Vendors } from '../../api/Vendor/Vendor';
 import { Customers } from '../../api/Customer/Customer';
 import { Admins } from '../../api/Admin/Admin';
