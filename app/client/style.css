@@ -41,3 +41,7 @@ body {
   background-position: center; /* Center the background image */
   min-height: 60vh; /* Set a minimum height to cover the entire viewport */
 }
+
+.right-btn {
+  margin-right: 20px;
+}
