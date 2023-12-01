@@ -40,36 +40,38 @@ const SignUp = ({ location }) => {
     return <Navigate to={from} />;
   }
   return (
-    <Container id="signup-page" className="py-5 page-background">
-      <Row className="justify-content-center">
-        <Col xs={5}>
-          <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card bg="dark" text="white" border="success" className="justify-content-center">
-              <Card.Body>
-                <Card.Header className="text-center fs-5">Register your account</Card.Header>
-                <TextField name="email" placeholder="E-mail address" />
-                <TextField name="password" placeholder="Password" type="password" />
-                <ErrorsField />
-                <SubmitField />
-              </Card.Body>
-            </Card>
-          </AutoForm>
-          <Alert variant="success">
-            Already have an account? Login
-            {' '}
-            <Link to="/signin">here</Link>
-          </Alert>
-          {error === '' ? (
-            ''
-          ) : (
-            <Alert variant="danger">
-              <Alert.Heading>Registration was not successful</Alert.Heading>
-              {error}
+    <div className="sign-picback">
+      <Container id="signup-page" className="py-5">
+        <Row className="justify-content-center">
+          <Col xs={5}>
+            <AutoForm schema={bridge} onSubmit={data => submit(data)}>
+              <Card bg="dark" text="white" border="success" className="justify-content-center">
+                <Card.Body>
+                  <Card.Header className="text-center fs-5">Register your account</Card.Header>
+                  <TextField name="email" placeholder="E-mail address" />
+                  <TextField name="password" placeholder="Password" type="password" />
+                  <ErrorsField />
+                  <SubmitField />
+                </Card.Body>
+              </Card>
+            </AutoForm>
+            <Alert variant="success">
+              Already have an account? Login
+              {' '}
+              <Link to="/signin">here</Link>
             </Alert>
-          )}
-        </Col>
-      </Row>
-    </Container>
+            {error === '' ? (
+              ''
+            ) : (
+              <Alert variant="danger">
+                <Alert.Heading>Registration was not successful</Alert.Heading>
+                {error}
+              </Alert>
+            )}
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 

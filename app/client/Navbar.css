@@ -1,0 +1,50 @@
+/* NavBar.css */
+
+.food-emojis {
+  display: flex;
+  align-items: center;
+  font-size: 24px; /* Adjust the font size as needed */
+}
+
+.emoji-1 {
+  animation: jump 2s infinite alternate 0.1s;
+}
+
+.emoji-2 {
+  animation: jump 2s infinite alternate 0.2s;
+}
+
+.emoji-3 {
+  animation: jump 2s infinite alternate 0.3s;
+}
+
+.emoji-4 {
+  animation: jump 2s infinite alternate 0.4s;
+}
+
+.emoji-5 {
+  animation: jump 2s infinite alternate 0.5s;
+}
+
+.emoji-6 {
+  animation: jump 2s infinite alternate 0.6s;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+

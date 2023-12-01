@@ -29,9 +29,8 @@ const VendorsCard = ({ vendor }) => (
           <Card.Text>
             <strong>Address:</strong> {vendor.address}
           </Card.Text>
-          <Card.Link href={vendor.weblink} target="_blank">
-          <Card.Link href={`show-vendor/${vendor._id}`} target="_blank">
-          </Card.Link>
+          <Card.Link href={vendor.weblink} target="_blank" />
+          <Card.Link href={`show-vendor/${vendor._id}`} target="_blank" />
         </div>
         <div>
           {/* Displaying the logo on the far right with full height */}
