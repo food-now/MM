@@ -46,3 +46,7 @@ body {
   background-image: url('images/UserProfileBackground.jpg');
   height: 70vh;
 }
+
+.right-btn {
+  margin-right: 20px;
+}

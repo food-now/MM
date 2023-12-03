@@ -32,14 +32,23 @@ const NavBar = () => {
               <Nav.Link id="list-stuff-nav" as={NavLink} to="/vendorsanditems" key="vendors">Vendors and Items</Nav.Link>,
             ]) : ''}
             {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-              <Nav.Link id="list-users-nav" as={NavLink} to="/user-list" key="admin">All Users</Nav.Link>
+              <Nav.Link id="AddItem" as={NavLink} to="/add" key="add">Add Item</Nav.Link>
             ) : ''}
-            {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-              <Nav.Link id="list-stuff-admin-nav" as={NavLink} to="/adminadd" key="admin">Add User</Nav.Link>
+            {currentUser ? ([
+              <Nav.Link id="AllVendors" as={NavLink} to="/list" key="list">All Vendors</Nav.Link>,
+            ]) : ''}
+            {currentUser && Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+              <Nav.Link id="AllUsers" as={NavLink} to="/user-list" key="admin">All Users</Nav.Link>
+            ) : ''}
+            {currentUser && Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+              <Nav.Link id="AddUser" as={NavLink} to="/adminadd" key="admin2">Add User</Nav.Link>
+            ) : ''}
+            {currentUser && Roles.userIsInRole(Meteor.userId(), 'vendor') ? (
+              <Nav.Link id="AddItem" as={NavLink} to="/add" key="add2">Add Item</Nav.Link>
             ) : ''}
           </Nav>
           <Nav className="justify-content-center"> {/* Updated this line */}
-            <div className="food-emojis">
+            <div className="food-emojis justify-content-center">
               {Array.from('🍔🌯🍱🍟🍨🍕').map((emoji, index) => (
                 <span key={index} className={`emoji-${index + 1}`}>{emoji}</span>
               ))}
@@ -61,7 +70,7 @@ const NavBar = () => {
               </NavDropdown>
             ) : (
               <NavDropdown id="navbar-current-user" title={currentUser}>
-                <NavDropdown.Item id="navbar-user-profile" as={NavLink} to="/profile">
+                <NavDropdown.Item id="userProfile" as={NavLink} to="/profile">
                   <PersonLinesFill />
                   {' '}
                   Profile

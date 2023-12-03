@@ -9,6 +9,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { Vendors } from '../../api/Vendor/Vendor';
 import { MenuItems } from '../../api/MenuItem/MenuItem';
 import VendorItem from '../components/VendorItem';
+import VendorPageHeader from '../components/VendorPageHeader';
 
 // const bridge = new SimpleSchema2Bridge(MenuItems.schema);
 
@@ -32,7 +33,7 @@ const ShowVendor = () => {
     const listMenuItems = MenuItems.collection.find({ vendorName }).fetch();
     console.log(listMenuItems);
     return {
-      vendorTarget: vendorName,
+      vendorTarget: targetVendor,
       menuItems: listMenuItems,
       ready: rdy,
     };
@@ -48,8 +49,8 @@ const ShowVendor = () => {
 
   return ready ? (
     <Container className="py-3">
+      <VendorPageHeader vendor={vendorTarget} />
       <Row className="justify-content-center">
-        <b>{vendorTarget}</b>
         {menuItems.map((item) => (
           <VendorItem key={item._id} menuItem={item} /> // Adjust this line according to your VendorItem component
         ))}

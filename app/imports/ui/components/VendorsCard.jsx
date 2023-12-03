@@ -31,6 +31,9 @@ const VendorsCard = ({ vendor }) => (
           </Card.Text>
           <Card.Link href={vendor.weblink} target="_blank" />
           <Card.Link href={`show-vendor/${vendor._id}`} target="_blank" />
+          <Card.Link href={`show-vendor/${vendor._id}`} target="_blank">
+            View Menu Items
+          </Card.Link>
         </div>
         <div>
           {/* Displaying the logo on the far right with full height */}
