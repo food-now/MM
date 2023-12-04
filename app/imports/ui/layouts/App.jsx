@@ -15,7 +15,7 @@ import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
 import LoadingSpinner from '../components/LoadingSpinner';
-import AddItem from '../pages/AddItem';
+import AddItemAdmin from '../pages/AddItemAdmin';
 import UserProfile from '../pages/UserProfile';
 import AllVendors from '../pages/AllVendors';
 import UserList from '../pages/UserList';
@@ -43,7 +43,7 @@ const App = () => {
           <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
           <Route path="/vendorsanditems" element={<ProtectedRoute><AllVendors /></ProtectedRoute>} />
           <Route path="/user-list" element={<ProtectedRoute><UserList /></ProtectedRoute>} />
-          <Route path="/additem" element={<ProtectedRoute><AddItem /></ProtectedRoute>} />
+          <Route path="/additemadmin" element={<AdminProtectedRoute ready={ready}><AddItemAdmin /></AdminProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/show-vendor/:_id" element={<ProtectedRoute><ShowVendor /></ProtectedRoute>} />
           <Route path="/adminadd" element={<AdminProtectedRoute ready={ready}><AddUsersAdmin /></AdminProtectedRoute>} />
