@@ -35,7 +35,7 @@ const VendorsCard = ({ vendor }) => (
         </div>
         <div>
           {/* Displaying the logo on the far right with full height */}
-          <Image src={vendor.logo} alt="Vendor Logo" style={{ height: '200px', width: '200px' }} />
+          <Image src={vendor.logo} alt="Vendor Logo" style={{ height: '200px', maxWidth: '500px' }} />
         </div>
       </div>
     </Card.Body>
