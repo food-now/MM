@@ -11,25 +11,28 @@ const NavBar = () => {
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
+
+  const logoLink = currentUser ? '/home' : '/';
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand as={NavLink} to="/">
+        <Navbar.Brand as={NavLink} to={logoLink}>
           <Image
             src="https://media.discordapp.net/attachments/1171567131977068675/1172018671007301732/Food_Now_Logo_1.png?ex=655eca72&is=654c5572&hm=30da1d3d7f91e9c61457bd049a0cbe1734d7eaa3d5c10be1beebec254778664d&=&width=792&height=792"
-            alt="logo"
+            alt="Food Now Logo"
             style={{ width: '90px', height: '90px' }}
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="link2 me-auto justify-content-start">
-            {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-              <Nav.Link id="AddItem" as={NavLink} to="/add" key="add">Add Item</Nav.Link>
-            ) : ''}
             {currentUser ? ([
-              <Nav.Link id="AllVendors" as={NavLink} to="/list" key="list">All Vendors</Nav.Link>,
+              <Nav.Link id="list-stuff-nav" as={NavLink} to="/vendorsanditems" key="vendors">Vendors and Items</Nav.Link>,
             ]) : ''}
+            {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+              <Nav.Link id="AddItem" as={NavLink} to="/additemadmin" key="add">Add Item</Nav.Link>
+            ) : ''}
             {currentUser && Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Nav.Link id="AllUsers" as={NavLink} to="/user-list" key="admin">All Users</Nav.Link>
             ) : ''}
@@ -39,6 +42,13 @@ const NavBar = () => {
             {currentUser && Roles.userIsInRole(Meteor.userId(), 'vendor') ? (
               <Nav.Link id="AddItem" as={NavLink} to="/add" key="add2">Add Item</Nav.Link>
             ) : ''}
+          </Nav>
+          <Nav className="justify-content-center"> {/* Updated this line */}
+            <div className="food-emojis justify-content-center">
+              {Array.from('🍔🌯🍱🍟🍨🍕').map((emoji, index) => (
+                <span key={index} className={`emoji-${index + 1}`}>{emoji}</span>
+              ))}
+            </div>
           </Nav>
           <Nav className="justify-content-end">
             {currentUser === '' ? (

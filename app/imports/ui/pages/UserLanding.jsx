@@ -1,6 +1,5 @@
 import React from 'react';
 import { Col, Container, Row, Image } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import InteractiveMap from '../components/InteractiveMap';
 
 const Landing = () => (
@@ -57,15 +56,6 @@ const Landing = () => (
         <Row className="align-middle text-center pt-3">
           <Col>
             <h3 className="pb-2">And more!...</h3>
-            <h4>Create an acount now to find your next meal!</h4>
-          </Col>
-        </Row>
-
-        <Row className="align-middle text-center pt-3">
-          <Col>
-            <Link to="/SignUp">
-              <button type="button" className="btn btn-outline-success btn-lg">Login</button>
-            </Link>
           </Col>
         </Row>
 

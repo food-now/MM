@@ -61,7 +61,7 @@ const formSchema = new SimpleSchema(
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 /* Renders the AddStuff page for adding a document. */
-const AddItem = () => {
+const AddItemAdmin = () => {
 
   const { ready, vendors } = useTracker(() => {
     // Note that this subscription will get cleaned up
@@ -127,4 +127,4 @@ const AddItem = () => {
   ) : <LoadingSpinner />);
 };
 
-export default AddItem;
+export default AddItemAdmin;

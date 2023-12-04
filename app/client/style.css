@@ -42,6 +42,11 @@ body {
   min-height: 60vh; /* Set a minimum height to cover the entire viewport */
 }
 
+.sign-picback {
+  background-image: url('images/UserProfileBackground.jpg');
+  height: 70vh;
+}
+
 .right-btn {
   margin-right: 20px;
 }

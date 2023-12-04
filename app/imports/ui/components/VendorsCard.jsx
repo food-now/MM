@@ -29,6 +29,8 @@ const VendorsCard = ({ vendor }) => (
           <Card.Text>
             <strong>Address:</strong> {vendor.address}
           </Card.Text>
+          <Card.Link href={vendor.weblink} target="_blank" />
+          <Card.Link href={`show-vendor/${vendor._id}`} target="_blank" />
           <Card.Link href={`show-vendor/${vendor._id}`} target="_blank">
             View Menu Items
           </Card.Link>

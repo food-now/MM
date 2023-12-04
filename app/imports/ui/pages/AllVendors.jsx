@@ -9,6 +9,7 @@ import { Vendors } from '../../api/Vendor/Vendor';
 // import { Stuffs } from '../../api/stuff/Stuff';
 import { MenuItems } from '../../api/MenuItem/MenuItem';
 import VendorsCard from '../components/VendorsCard';
+import VendorFilter from '../components/VendorFilter';
 
 const ListStuff = () => {
   const { ready, vendors } = useTracker(() => {
@@ -35,7 +36,7 @@ const ListStuff = () => {
         <Col md={2}>
           {/* Your filter components go here */}
           <h2>Filters</h2>
-          {/* Add your filter components or content here */}
+          <VendorFilter />
         </Col>
 
         {/* Middle Block for Section */}
