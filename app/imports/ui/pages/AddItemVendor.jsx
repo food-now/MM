@@ -65,25 +65,18 @@ const AddItemVendor = () => {
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() || {},
   }), []);
-
-  const { ready, vendorName } = useTracker(() => {
+  const userEmail = currentUser.emails && currentUser.emails[0] && currentUser.emails[0].address;
+  const { ready, vendorlist } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(Vendors.vendorPublicationName);
+    const subscription = Meteor.subscribe(Vendors.defaultPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
-
-    const userEmail = currentUser.emails && currentUser.emails[0] && currentUser.emails[0].address;
     const vendorsCol = Vendors.collection.find({}).fetch();
-    let matchedVendor = null;
-    matchedVendor = vendorsCol.find(vendor => {
-      console.log('Vendor Owner:', vendor.owner); // Log vendor.owner entries
-      return vendor.owner === userEmail;
-    });
     return {
-      vendorName: matchedVendor.vendorName,
+      vendorlist: vendorsCol,
       ready: rdy,
     };
   }, []);
@@ -93,6 +86,10 @@ const AddItemVendor = () => {
     const { name, price, special, specialDate, image, allergens } = data;
     const owner = Meteor.user().username;
     const dateCreated = new Date();
+    const vendorName = vendorlist.find(vendor => {
+      console.log('Vendor Owner:', vendor.owner); // Log vendor.owner entries
+      return vendor.owner === userEmail;
+    }).vendorName;
     // TODO: IMPLEMENT THE REST OF THE INFO FOR INSERTION OR MAKE THINGS OPTIONAL FOR TESTING
     MenuItems.collection.insert(
       { vendorName, name, price, special, dateCreated, image, owner, specialDate, allergens },
