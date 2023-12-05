@@ -43,8 +43,8 @@ const NavBar = () => {
               <Nav.Link id="AddItem" as={NavLink} to="/add" key="add2">Add Item</Nav.Link>
             ) : ''}
           </Nav>
-          <Nav className="justify-content-center"> {/* Updated this line */}
-            <div className="food-emojis justify-content-center">
+          <Nav className="justify-content-center">
+            <div className="food-emojis">
               {Array.from('🍔🌯🍱🍟🍨🍕').map((emoji, index) => (
                 <span key={index} className={`emoji-${index + 1}`}>{emoji}</span>
               ))}

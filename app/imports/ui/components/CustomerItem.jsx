@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const CustomerItem = ({ customer }) => (
@@ -8,6 +9,12 @@ const CustomerItem = ({ customer }) => (
     <td>{customer.owner}</td>
     <td>
       <img src={customer.profilePic} alt="Profile" style={{ width: '75px', height: '75px' }} />
+    </td>
+    <td className="pt-4">
+      {/* Add a delete button with an onClick handler */}
+      <Button variant="danger">
+        Delete
+      </Button>
     </td>
   </tr>
 );
