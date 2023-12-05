@@ -84,8 +84,6 @@ const AddItemAdmin = () => {
     const { vendorName, name, price, special, specialDate, image, allergens } = data;
     const owner = Meteor.user().username;
     const dateCreated = new Date();
-    // console.log(dateCreated);
-    // TODO: IMPLEMENT THE REST OF THE INFO FOR INSERTION OR MAKE THINGS OPTIONAL FOR TESTING
     MenuItems.collection.insert(
       { vendorName, name, price, special, dateCreated, image, owner, specialDate, allergens },
       (error) => {

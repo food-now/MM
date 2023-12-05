@@ -10,9 +10,7 @@ import { MenuItems } from '../../api/MenuItem/MenuItem';
 import { Vendors } from '../../api/Vendor/Vendor';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-// Create a schema to specify the structure of the data to appear in the form.
-// TODO: CREATE APPLY EVERYTHING FROM SCHEMA INTO LIST
-// const list = ['test1', 'test2', 'test3'];
+
 const formSchema = new SimpleSchema(
   {
     owner: {
@@ -90,7 +88,6 @@ const AddItemVendor = () => {
       console.log('Vendor Owner:', vendor.owner); // Log vendor.owner entries
       return vendor.owner === userEmail;
     }).vendorName;
-    // TODO: IMPLEMENT THE REST OF THE INFO FOR INSERTION OR MAKE THINGS OPTIONAL FOR TESTING
     MenuItems.collection.insert(
       { vendorName, name, price, special, dateCreated, image, owner, specialDate, allergens },
       (error) => {

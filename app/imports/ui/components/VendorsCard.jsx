@@ -18,6 +18,7 @@
 import React from 'react';
 import { Card, Image } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const VendorsCard = ({ vendor }) => (
   <Card style={{ marginBottom: '20px' }}>
@@ -29,11 +30,9 @@ const VendorsCard = ({ vendor }) => (
           <Card.Text>
             <strong>Address:</strong> {vendor.address}
           </Card.Text>
-          <Card.Link href={vendor.weblink} target="_blank" />
-          <Card.Link href={`show-vendor/${vendor._id}`} target="_blank" />
-          <Card.Link href={`show-vendor/${vendor._id}`} target="_blank">
-            View Menu Items
-          </Card.Link>
+          <Link to={`/show-vendor/${vendor._id}`}>
+            <button type="button" className="btn btn-outline-success btn-lg">View Menu</button>
+          </Link>
         </div>
         <div>
           {/* Displaying the logo on the far right with full height */}
