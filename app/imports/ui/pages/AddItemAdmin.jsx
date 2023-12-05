@@ -112,7 +112,7 @@ const AddItemAdmin = () => {
                 <TextField name="image" />
                 <SelectField name="vendorName" options={vendors} transform={value => value} />
                 <BoolField name="special" />
-                <DateField name="specialDate" />
+                {/* <DateField name="specialDate" /> */}
                 { /* <SelectField name="allergens" choices={allergenList} /> */ }
                 <SubmitField value="Submit" />
                 <ErrorsField />
