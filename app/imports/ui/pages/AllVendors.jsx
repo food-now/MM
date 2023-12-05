@@ -3,12 +3,11 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import LoadingSpinner from '../components/LoadingSpinner';
-// import VendorsCard from '../components/VendorsCard';
+import VendorsCard from '../components/VendorsCard';
 import InteractiveMap from '../components/InteractiveMap';
 import { Vendors } from '../../api/Vendor/Vendor';
 // import { Stuffs } from '../../api/stuff/Stuff';
 import { MenuItems } from '../../api/MenuItem/MenuItem';
-import VendorsCard from '../components/VendorsCard';
 import VendorFilter from '../components/VendorFilter';
 
 const ListStuff = () => {
