@@ -57,7 +57,7 @@ class MenuItemsCollection {
         },
         image: {
           type: String,
-          defaultValue: '',
+          defaultValue: '/images/Missing.png',
           required: false,
         },
       },

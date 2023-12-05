@@ -45,6 +45,7 @@ const VendorList = () => {
               {vendors.map((vendor) => (
                 <VendorUser key={vendor._id} vendor={vendor} />
               ))}
+              { /* Deletions: Comments.update({ _id: commentId }, { $pull: { replies: { _id: replyComntID } } }) */ }
             </tbody>
           </Table>
         </Col>

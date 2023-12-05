@@ -15,7 +15,7 @@ const VendorItem = ({ menuItem }) => (
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div>
           <Card.Title>{menuItem.name}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">Price: {menuItem.price}$</Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted">Price: {menuItem.price.toFixed(2)}$</Card.Subtitle>
           <Card.Text>
             <strong>Date Added:</strong> {menuItem.dateCreated.toDateString()}
           </Card.Text>

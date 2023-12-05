@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, BoolField, DateField, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, BoolField, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -10,9 +10,6 @@ import { MenuItems } from '../../api/MenuItem/MenuItem';
 import { Vendors } from '../../api/Vendor/Vendor';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-// Create a schema to specify the structure of the data to appear in the form.
-// TODO: CREATE APPLY EVERYTHING FROM SCHEMA INTO LIST
-// const list = ['test1', 'test2', 'test3'];
 const formSchema = new SimpleSchema(
   {
     owner: {
@@ -90,7 +87,6 @@ const AddItemVendor = () => {
       console.log('Vendor Owner:', vendor.owner); // Log vendor.owner entries
       return vendor.owner === userEmail;
     }).vendorName;
-    // TODO: IMPLEMENT THE REST OF THE INFO FOR INSERTION OR MAKE THINGS OPTIONAL FOR TESTING
     MenuItems.collection.insert(
       { vendorName, name, price, special, dateCreated, image, owner, specialDate, allergens },
       (error) => {
@@ -118,7 +114,7 @@ const AddItemVendor = () => {
                 <NumField name="price" decimal={2} />
                 <TextField name="image" />
                 <BoolField name="special" />
-                <DateField name="specialDate" />
+                {/* <DateField name="specialDate" /> */}
                 { /* <SelectField name="allergens" choices={allergenList} /> */ }
                 <SubmitField value="Submit" />
                 <ErrorsField />
