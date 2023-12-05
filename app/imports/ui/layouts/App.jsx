@@ -21,6 +21,7 @@ import AllVendors from '../pages/AllVendors';
 import UserList from '../pages/UserList';
 import ShowVendor from '../pages/ShowVendor';
 import UserLanding from '../pages/UserLanding';
+import AddItemVendor from '../pages/AddItemVendor';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/vendorsanditems" element={<ProtectedRoute><AllVendors /></ProtectedRoute>} />
           <Route path="/user-list" element={<ProtectedRoute><UserList /></ProtectedRoute>} />
           <Route path="/additemadmin" element={<AdminProtectedRoute ready={ready}><AddItemAdmin /></AdminProtectedRoute>} />
+          <Route path="/additemvendor" element={<ProtectedRoute><AddItemVendor /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/show-vendor/:_id" element={<ProtectedRoute><ShowVendor /></ProtectedRoute>} />
           <Route path="/adminadd" element={<AdminProtectedRoute ready={ready}><AddUsersAdmin /></AdminProtectedRoute>} />
