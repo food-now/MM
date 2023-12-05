@@ -14,7 +14,6 @@ const VendorFilter = ({ onFilterChange }) => {
 
   return (
     <div className="vendor-filter">
-      <h2>Filters</h2>
       <div>
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label>Food Ingredients:</label>
