@@ -50,3 +50,8 @@ body {
 .right-btn {
   margin-right: 20px;
 }
+
+.vendor-list {
+  max-height: 700px; /* Set your desired height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
