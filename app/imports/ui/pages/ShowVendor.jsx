@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 // import _ from 'underscore';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -50,11 +50,13 @@ const ShowVendor = () => {
   return ready ? (
     <Container className="py-3">
       <VendorPageHeader vendor={vendorTarget} />
-      <Row className="justify-content-center">
+      <div className="menu-container">
         {menuItems.map((item) => (
-          <VendorItem key={item._id} menuItem={item} /> // Adjust this line according to your VendorItem component
+          <div className="menu-item">
+            <VendorItem key={item._id} menuItem={item} />
+          </div>
         ))}
-      </Row>
+      </div>
     </Container>
   ) : <LoadingSpinner />;
 };

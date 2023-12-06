@@ -16,15 +16,16 @@
 
 // CardComponent.js
 import React from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Image, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const VendorHeader = ({ vendor }) => (
-  <Container className="py-3">
-    <Row className="align-middle text-center">
-      <h1>
+  <Container>
+    <Row className="header-row">
+      <h1 style={{ width: 'auto', fontSize: '70px' }}>
         {vendor.vendorName}
       </h1>
+      <Image src={vendor.logo} alt="Vendor Logo" style={{ height: 'auto', width: 'auto', maxHeight: '200px' }} />
     </Row>
   </Container>
 );
@@ -32,6 +33,7 @@ const VendorHeader = ({ vendor }) => (
 VendorHeader.propTypes = {
   vendor: PropTypes.shape({
     vendorName: PropTypes.string,
+    logo: PropTypes.string,
   }).isRequired,
 };
 export default VendorHeader;
