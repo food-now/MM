@@ -23,6 +23,11 @@ const CustomerList = () => {
       ready: rdy,
     };
   }, []);
+
+  const deleteCustomer = (customerId) => {
+    Customers.collection.remove({ _id: customerId });
+  };
+
   return (ready ? (
     <Container className="py-3">
       <Row className="justify-content-center">
@@ -36,10 +41,17 @@ const CustomerList = () => {
                 <th>Customer Name</th>
                 <th>Email</th>
                 <th>Profile Picture</th>
+                <th>Delete Options</th>
               </tr>
             </thead>
             <tbody>
-              {customers.map((customer) => <CustomerItem key={customer._id} customer={customer} />)}
+              {customers.map((customer) => (
+                <CustomerItem
+                  key={customer._id}
+                  customer={customer}
+                  onDelete={deleteCustomer}
+                />
+              ))}
             </tbody>
           </Table>
         </Col>
