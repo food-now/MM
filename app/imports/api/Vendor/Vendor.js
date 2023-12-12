@@ -21,6 +21,7 @@ class VendorCollection {
       weblink: String,
       logo: {
         type: String,
+        defaultValue: '/images/Missing.png',
         required: false,
       },
     });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, BoolField, DateField, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, BoolField, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -84,8 +84,6 @@ const AddItemAdmin = () => {
     const { vendorName, name, price, special, specialDate, image, allergens } = data;
     const owner = Meteor.user().username;
     const dateCreated = new Date();
-    // console.log(dateCreated);
-    // TODO: IMPLEMENT THE REST OF THE INFO FOR INSERTION OR MAKE THINGS OPTIONAL FOR TESTING
     MenuItems.collection.insert(
       { vendorName, name, price, special, dateCreated, image, owner, specialDate, allergens },
       (error) => {
@@ -114,7 +112,7 @@ const AddItemAdmin = () => {
                 <TextField name="image" />
                 <SelectField name="vendorName" options={vendors} transform={value => value} />
                 <BoolField name="special" />
-                <DateField name="specialDate" />
+                {/* <DateField name="specialDate" /> */}
                 { /* <SelectField name="allergens" choices={allergenList} /> */ }
                 <SubmitField value="Submit" />
                 <ErrorsField />

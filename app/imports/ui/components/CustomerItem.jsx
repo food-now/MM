@@ -18,6 +18,23 @@ const CustomerItem = ({ customer }) => (
     </td>
   </tr>
 );
+const CustomerItem = ({ customer, onDelete }) => {
+  const handleDelete = () => {
+    onDelete(customer._id); // Pass the customer ID to the onDelete function
+  };
+  return (
+    <tr>
+      <td>{customer.customerName}</td>
+      <td>{customer.owner}</td>
+      <td>
+        <img src={customer.profilePic} alt="Profile" style={{ width: '75px', height: '75px' }} />
+      </td>
+      <td>
+        <Button onClick={handleDelete}>Delete</Button>
+      </td>
+    </tr>
+  );
+};
 
 // Require a document to be passed to this component.
 CustomerItem.propTypes = {
@@ -27,6 +44,7 @@ CustomerItem.propTypes = {
     profilePic: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default CustomerItem;

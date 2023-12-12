@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { Accounts } from 'meteor/accounts-base';
 import { Roles } from 'meteor/alanning:roles';
+import { Customers } from '../imports/api/Customer/Customer';
 
 Meteor.methods({
   createUserOnServer: function (email, password, role) {
@@ -32,5 +33,39 @@ Meteor.methods({
     }
 
     return userID;
+  },
+  getAllUsers() {
+    return Meteor.users.find().fetch();
+  },
+  resetRoles: function (userId, role) {
+    check(userId, String);
+    check(role, String);
+    Roles.addUsersToRoles(userId, 'customer');
+
+    if (role === 'customer') {
+      return;
+    }
+    if (role === 'admin') {
+      Roles.createRole(role, { unlessExists: true });
+      Roles.removeUsersFromRoles(userId, 'admin');
+    }
+
+    if (role === 'vendor') {
+      Roles.createRole(role, { unlessExists: true });
+      Roles.removeUsersFromRoles(userId, 'vendor');
+    }
+  },
+  addCustomer(customerName, owner, profilePic) {
+    check(customerName, String);
+    check(owner, String);
+    check(profilePic, String);
+
+    const customerId = Customers.collection.insert({
+      customerName,
+      owner,
+      profilePic,
+    });
+
+    return customerId;
   },
 });
