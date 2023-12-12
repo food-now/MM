@@ -27,7 +27,7 @@ const VendorList = () => {
   const deleteVendor = (vendorId, vendorOwner, vendorName, vendorLogo) => {
     Meteor.call('getAllUsers', (error, result) => {
       if (error) {
-        console.error('Error fetching users:', error);
+        console.log('Error fetching users:', error);
       } else {
         console.log('All Meteor Users:', result);
         const user = result.find(obj => obj.username === vendorOwner);
@@ -68,28 +68,30 @@ const VendorList = () => {
           <Col className="text-center">
             <h2>All Vendor Accounts</h2>
           </Col>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>Vendor Name</th>
-                <th>Email</th>
-                <th>Address</th>
-                <th>Website</th>
-                <th>Logo</th>
-                <th>Delete Options</th>
-              </tr>
-            </thead>
-            <tbody>
-              {vendors.map((vendor) => (
-                <VendorUser
-                  key={vendor._id}
-                  vendor={vendor}
-                  onDelete={deleteVendor}
-                />
-              ))}
-              { /* Deletions: Comments.update({ _id: commentId }, { $pull: { replies: { _id: replyComntID } } }) */ }
-            </tbody>
-          </Table>
+          <Row className="justify-content-center">
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>Vendor Name</th>
+                  <th>Email</th>
+                  <th>Address</th>
+                  <th>Website</th>
+                  <th>Logo</th>
+                  <th>Delete Options</th>
+                </tr>
+              </thead>
+              <tbody>
+                {vendors.map((vendor) => (
+                  <VendorUser
+                    key={vendor._id}
+                    vendor={vendor}
+                    onDelete={deleteVendor}
+                  />
+                ))}
+                { /* Deletions: Comments.update({ _id: commentId }, { $pull: { replies: { _id: replyComntID } } }) */ }
+              </tbody>
+            </Table>
+          </Row>
         </Col>
       </Row>
     </Container>

@@ -9,7 +9,6 @@ import { Vendors } from '../../api/Vendor/Vendor';
 // import { Stuffs } from '../../api/stuff/Stuff';
 import { MenuItems } from '../../api/MenuItem/MenuItem';
 import VendorsCard from '../components/VendorsCard';
-import VendorFilter from '../components/VendorFilter';
 
 const ListStuff = () => {
   const { ready, vendors } = useTracker(() => {
@@ -20,6 +19,8 @@ const ListStuff = () => {
     const subscription2 = Meteor.subscribe(MenuItems.defaultPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready() && subscription2;
+    console.log('Subscription ready:', subscription.ready());
+    console.log('Subscription error:', subscription.error);
     // Get the Stuff documents
     const vendorsCol = Vendors.collection.find({}).fetch();
     const foodItems = MenuItems.collection.find({}).fetch();
@@ -29,20 +30,14 @@ const ListStuff = () => {
       ready: rdy,
     };
   }, []);
-  return (ready ? (
-    <Container id="AllVendors-page" fluid className="py-5">
-      <Row>
-        {/* Left Block for Filters */}
-        <Col className="col-auto py-2">
-          {/* Your filter components go here */}
-          <h2>Filters</h2>
-          <VendorFilter />
-        </Col>
 
+  return (ready ? (
+    <Container id="AllVendors-page" fluid className="py-5 px-5">
+      <Row>
         {/* Middle Block for Section */}
         <Col md={6}>
           {/* Your main section components go here */}
-          <h1 className="text-center mb-3">Vendors Available at UH Manoa</h1>
+          <h1 className="">Vendors Available at UH Manoa</h1>
           <div className="vendor-list">
             {vendors.map((vendor, index) => (
               <VendorsCard vendor={vendor} key={index} />
@@ -54,7 +49,7 @@ const ListStuff = () => {
         {/* Right Block for Section */}
         <Col className="col-4 py-2">
           {/* Your right section components go here */}
-          <h2 className="justify-content-center mb-3">Find Your Favorite Spots</h2>
+          <h1 className="">Find Your Favorite Spots</h1>
           <InteractiveMap />
           {/* Add your right section components or content here */}
         </Col>

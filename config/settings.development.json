@@ -7,7 +7,6 @@
   "defaultAccounts": [
     { "email": "admin", "password": "123", "role": "admin" },
     { "email": "john", "password": "123", "role": "customer" },
-    { "email": "mcdonalds", "password": "123", "role": "vendor" },
     { "email": "vendor", "password": "123", "role": "vendor" },
     { "email": "alohacoffee@foo.com", "password": "123", "role": "vendor" },
     { "email": "dunkindonut@foo.com", "password": "123", "role": "vendor" },
@@ -25,11 +24,11 @@
   ],
   
   "defaultCustomers": [
-    { "customerName":  "John Smith", "profilePic": "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg", "owner": "john@foo.com" }
+    { "customerName":  "John Smith", "profilePic": "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg", "owner": "john" }
   ],
   
   "defaultAdmins": [
-    { "adminName": "UHM Food Admin", "owner":  "admin@foo.com", "profilePic": "https://cdn3.iconfinder.com/data/icons/user-group-black/100/user-process-512.png" }
+    { "adminName": "UHM Food Admin", "owner":  "admin", "profilePic": "https://cdn3.iconfinder.com/data/icons/user-group-black/100/user-process-512.png" }
   ],
   
   "defaultData": [
