@@ -22,6 +22,7 @@ const ListStuff = () => {
     const rdy = subscription.ready() && subscription2;
     // Get the Stuff documents
     const vendorsCol = Vendors.collection.find({}).fetch();
+    console.log(vendorsCol);
     const foodItems = MenuItems.collection.find({}).fetch();
     return {
       vendors: vendorsCol,
