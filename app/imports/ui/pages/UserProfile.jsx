@@ -48,6 +48,7 @@ const UserProfile = () => {
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   return (
+  // eslint-disable-next-line max-len
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>

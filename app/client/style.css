@@ -41,3 +41,37 @@ body {
   background-position: center; /* Center the background image */
   min-height: 60vh; /* Set a minimum height to cover the entire viewport */
 }
+
+.sign-picback {
+  background-image: url('images/UserProfileBackground.jpg');
+  height: 70vh;
+}
+
+.right-btn {
+  margin-right: 20px;
+}
+
+.vendor-list {
+  max-height: 700px; /* Set your desired height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.menu-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px; /* Adjust the gap between items as needed */
+}
+
+/* Style for each menu item */
+.menu-item {
+  flex: 0 0 calc(33.33% - 10px); /* Each item takes up one-third of the container */
+  max-width: calc(33.33% - 10px); /* Maximum width of one-third */
+  box-sizing: border-box; /* Include padding in the width */
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

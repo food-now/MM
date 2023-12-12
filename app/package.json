@@ -7,12 +7,15 @@
     "classnames": "^2.3.2",
     "core-js": "^3.31.1",
     "graphql": "^16.8.1",
+    "leaflet": "^1.9.4",
     "meteor-node-stubs": "^1.2.5",
     "prop-types": "^15.7.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-bootstrap-icons": "^1.10.3",
     "react-dom": "^18.2.0",
+    "react-leaflet": "^4.2.1",
+    "react-map-gl": "^7.1.6",
     "react-router": "^6.14.1",
     "react-router-dom": "^6.14.1",
     "simpl-schema": "^3.4.1",
@@ -33,7 +36,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-utils": "^3.0.0",
-    "testcafe": "^3.3.0"
+    "testcafe": "^3.4.0"
   },
   "scripts": {
     "start": "meteor --no-release-check --exclude-archs web.browser.legacy,web.cordova --settings ../config/settings.development.json",
@@ -43,6 +46,7 @@
     "testcafe-single": "testcafe chrome tests/*.testcafe.js -t \"Test that signin and signout work\"",
     "testcafe-ci": "testcafe chrome:headless tests/*.testcafe.js -q --app \"meteor npm run start\"",
     "test-all": "meteor reset && meteor npm run lint && meteor npm run unimported && meteor npm run testcafe-ci",
+    "testcafe-development": "testcafe chrome tests/*.testcafe.js",
     "unimported": "npx unimported"
   }
 }
