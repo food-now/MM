@@ -7,16 +7,28 @@
   "defaultAccounts": [
     { "email": "admin", "password": "123", "role": "admin" },
     { "email": "john", "password": "123", "role": "customer" },
-    { "email": "mcdonalds", "password": "123", "role": "vendor" },
-    { "email": "vendor@foo.com", "password": "123", "role": "vendor" }
+    { "email": "vendor", "password": "123", "role": "vendor" },
+    { "email": "alohacoffee@foo.com", "password": "123", "role": "vendor" },
+    { "email": "dunkindonut@foo.com", "password": "123", "role": "vendor" },
+    { "email": "evisuya@foo.com", "password": "123", "role": "vendor" },
+    { "email": "happybelly@foo.com", "password": "123", "role": "vendor" },
+    { "email": "hicravings@foo.com", "password": "123", "role": "vendor" },
+    { "email": "holoholobistro@foo.com", "password": "123", "role": "vendor" },
+    { "email": "l&lhawaiianbarbecue@foo.com", "password": "123", "role": "vendor" },
+    { "email": "lasoon@foo.com", "password": "123", "role": "vendor" },
+    { "email": "lecrepecafe@foo.com", "password": "123", "role": "vendor" },
+    { "email": "pandaexpress@foo.com", "password": "123", "role": "vendor" },
+    { "email": "samasama@foo.com", "password": "123", "role": "vendor" },
+    { "email": "veggidogs@foo.com", "password": "123", "role": "vendor" },
+    { "email": "thebeancounter@foo.com", "password": "123", "role": "vendor" }
   ],
   
   "defaultCustomers": [
-    { "customerName":  "John Smith", "profilePic": "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg", "owner": "john@foo.com" }
+    { "customerName":  "John Smith", "profilePic": "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg", "owner": "john" }
   ],
   
   "defaultAdmins": [
-    { "adminName": "UHM Food Admin", "owner":  "admin@foo.com", "profilePic": "https://cdn3.iconfinder.com/data/icons/user-group-black/100/user-process-512.png" }
+    { "adminName": "UHM Food Admin", "owner":  "admin", "profilePic": "https://cdn3.iconfinder.com/data/icons/user-group-black/100/user-process-512.png" }
   ],
   
   "defaultData": [
@@ -27,8 +39,19 @@
   ],
 
   "defaultVendorData": [
-    { "vendorName": "mcdonalds", "owner": "mcdonalds@foo.com", "address": "123 poopoo street", "weblink": "mcdonalds.com", "logo": "" },
-    { "vendorName":  "Dunkin Donut", "address": "333 Dole St", "weblink": "http://test.com", "logo": "https://s3.amazonaws.com/cms.ipressroom.com/285/files/202210/636263d7b3aed31adbc8dce7_Dunkin_Holiday+2022_Lifestyle_RGB/Dunkin_Holiday+2022_Lifestyle_RGB_a619cce2-37d0-4d52-9616-14759fc41673-prv.jpg", "owner": "vendor@foo.com" }
+    { "vendorName": "Aloha Coffee", "owner": "alohacoffee@foo.com", "address": "Correa Rd (Food Truck Row)", "weblink": "https://www.instagram.com/sayalohatocoffee/", "logo": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2023/09/logo-no-background-.png" },
+    { "vendorName":  "Dunkin Donut", "address": "2560 McCarthy Mall, Honolulu, HI 96822", "weblink": "https://www.dunkindonuts.com/en", "logo": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/dunkin_logo.png", "owner": "dunkindonut@foo.com" },
+    { "vendorName":  "Evisuya", "address": "Correa Rd (Food Truck Row)", "weblink": "https://www.evisuyahawaii.com/#3", "logo": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2022/11/evisuya_logo.png", "owner": "evisuya@foo.com" },
+    { "vendorName":  "Happy Belly", "address": "Correa Rd (Food Truck Row)", "weblink": "https://www.instagram.com/happybellyeatery/", "logo": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2022/10/Happy-Belly-Eatery-logo.png", "owner": "happybelly@foo.com" },
+    { "vendorName":  "HI Cravings", "address": "Correa Rd (Food Truck Row)", "weblink": "https://www.instagram.com/hicravingsmobile/", "logo": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2022/10/hicravings_logo.png", "owner": "hicravings@foo.com" },
+    { "vendorName":  "Holoholo Bistro", "address": "Correa Rd (Food Truck Row)", "weblink": "https://www.instagram.com/holohologrilluh/", "logo": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2022/10/holoholob_logo.png", "owner": "holoholobistro@foo.com" },
+    { "vendorName":  "L&L Hawaiian Barbecue", "address": "2560 McCarthy Mall, Honolulu, HI 96822", "weblink": "https://www.hawaiianbarbecue.com/", "logo": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/landl_logo.png", "owner": "l&lhawaiianbarbecue@foo.com" },
+    { "vendorName":  "Lasoon", "address": "2560 McCarthy Mall, Honolulu, HI 96822", "weblink": "https://www.lasoonhawaii.com/", "logo": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/lasoon_logo.png", "owner": "lasoon@foo.com" },
+    { "vendorName":  "Le Crêpe Café", "address": "2560 McCarthy Mall, Honolulu, HI 96822", "weblink": "https://www.lecrepecafe.com/menu/", "logo": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/lecrepe_logo.png", "owner": "lecrepecafe@foo.com" },
+    { "vendorName":  "Panda Express", "address": "2560 McCarthy Mall, Honolulu, HI 96822", "weblink": "https://www.pandaexpress.com/", "logo": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2023/01/panda_logo.png", "owner": "pandaexpress@foo.com" },
+    { "vendorName":  "Sama Sama", "address": "Correa Rd (Food Truck Row)", "weblink": "https://www.instagram.com/samasamahawaii/", "logo": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2023/01/samasamalogo.png", "owner": "samasama@foo.com" },
+    { "vendorName":  "Veggi Dogs", "address": "Correa Rd (Food Truck Row)", "weblink": "https://www.instagram.com/veggidogs/", "logo": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2023/08/veggilogo.gif", "owner": "veggidogs@foo.com" },
+    { "vendorName":  "The Bean Counter", "address": "2404 Maile Wy, Honolulu, HI 96822", "weblink": "https://splinternetmarketing.com/local-pros/hi/honolulu/beancounters-bookkeeping-services/", "logo": "https://manoa.hawaii.edu/food/wp-content/uploads/sites/37/2020/05/beancounter_logo.png", "owner": "thebeancounter@foo.com" }
   ],
 
   "defaultMenuItemData": [

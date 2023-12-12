@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Card, Col, Container, FormSelect, Row } from 'react-bootstrap';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
@@ -93,10 +94,17 @@ const AddUsers = () => {
         swal('Error', 'Please fill in all customer-specific fields', 'error');
         return;
       }
-
       // Insert into collection using userData
       Customers.collection.insert(userData, (error) => {
         handleInsertResult(error, formRef);
+      });
+
+      Meteor.call('createUserOnServer', email, password, 'customer', (error, result) => {
+        if (error) {
+          console.error('Error creating user:', error.reason);
+        } else {
+          console.log('User created successfully:', result);
+        }
       });
     } else if (selectedOption === '2') {
       // Vendor
@@ -113,6 +121,13 @@ const AddUsers = () => {
       Vendors.collection.insert(vendorData, (error) => {
         handleInsertResult(error, formRef);
       });
+      Meteor.call('createUserOnServer', email, password, 'vendor', (error, result) => {
+        if (error) {
+          console.error('Error creating user:', error.reason);
+        } else {
+          console.log('User created successfully:', result);
+        }
+      });
     } else if (selectedOption === '3') {
       // Admin
       const { adminName, profilePic } = data;
@@ -128,6 +143,13 @@ const AddUsers = () => {
       // Replace 'Admins' with the actual collection name for admins
       Admins.collection.insert(adminData, (error) => {
         handleInsertResult(error, formRef);
+      });
+      Meteor.call('createUserOnServer', email, password, 'admin', (error, result) => {
+        if (error) {
+          console.error('Error creating user:', error.reason);
+        } else {
+          console.log('User created successfully:', result);
+        }
       });
     }
   };

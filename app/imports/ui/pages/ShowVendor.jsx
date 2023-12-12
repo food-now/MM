@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 // import _ from 'underscore';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -9,6 +9,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { Vendors } from '../../api/Vendor/Vendor';
 import { MenuItems } from '../../api/MenuItem/MenuItem';
 import VendorItem from '../components/VendorItem';
+import VendorPageHeader from '../components/VendorPageHeader';
 
 // const bridge = new SimpleSchema2Bridge(MenuItems.schema);
 
@@ -32,7 +33,7 @@ const ShowVendor = () => {
     const listMenuItems = MenuItems.collection.find({ vendorName }).fetch();
     console.log(listMenuItems);
     return {
-      vendorTarget: vendorName,
+      vendorTarget: targetVendor,
       menuItems: listMenuItems,
       ready: rdy,
     };
@@ -48,12 +49,14 @@ const ShowVendor = () => {
 
   return ready ? (
     <Container className="py-3">
-      <Row className="justify-content-center">
-        <b>{vendorTarget}</b>
+      <VendorPageHeader vendor={vendorTarget} />
+      <div className="menu-container">
         {menuItems.map((item) => (
-          <VendorItem key={item._id} menuItem={item} /> // Adjust this line according to your VendorItem component
+          <div className="menu-item">
+            <VendorItem key={item._id} menuItem={item} />
+          </div>
         ))}
-      </Row>
+      </div>
     </Container>
   ) : <LoadingSpinner />;
 };

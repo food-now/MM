@@ -11,7 +11,7 @@ import { Admins } from '../../api/Admin/Admin';
 // If logged in with customer or admin role, then publish all menu items from all vendors. Any filtering should be done on client.
 // Otherwise, publish nothing.
 Meteor.publish(MenuItems.defaultPublicationName, function () {
-  if (this.userId && (Roles.userIsInRole(this.userId, 'customer') || Roles.userIsInRole(this.userId, 'admin'))) {
+  if (this.userId && (Roles.userIsInRole(this.userId, 'customer') || Roles.userIsInRole(this.userId, 'admin') || Roles.userIsInRole(this.userId, 'vendor'))) {
     return MenuItems.collection.find();
   }
   return this.ready();
@@ -35,10 +35,7 @@ Meteor.publish(MenuItems.vendorPublicationName, function () {
 // If logged in with customer or admin role, then publish all vendors. Any filtering should be done on client.
 // Otherwise, publish nothing.
 Meteor.publish(Vendors.defaultPublicationName, function () {
-  if (this.userId && (Roles.userIsInRole(this.userId, 'customer') || Roles.userIsInRole(this.userId, 'admin'))) {
-    return Vendors.collection.find();
-  }
-  return this.ready();
+  return Vendors.collection.find();
 });
 
 // Vendor-level publication.
@@ -59,7 +56,6 @@ Meteor.publish(Customers.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Customers.collection.find();
   }
-  console.log('Ready for pub!');
   return this.ready();
 });
 
@@ -78,8 +74,6 @@ Meteor.publish(Vendors.adminPublicationName, function () {
   }
   return this.ready();
 });
-
-/*    alanning:roles publication    */
 
 // Recommended code to publish roles for each user.
 Meteor.publish(null, function () {

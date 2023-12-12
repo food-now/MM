@@ -22,7 +22,7 @@ class NavBar {
   }
 
   async gotoAddItemPage(testController) {
-    await testController.click('#AddItem');
+    await testController.click('#AddItemAdmin');
   }
 
   async gotoAllVendorsPage(testController) {
