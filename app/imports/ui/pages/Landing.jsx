@@ -6,7 +6,7 @@ import InteractiveMap from '../components/InteractiveMap';
 const Landing = () => (
 
   <div>
-    <div className="landing-picback" />
+    <div className="landing-picback" id="landing-page" />
 
     <div>
       <Container className="p-3">
