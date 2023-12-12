@@ -23,6 +23,7 @@ const ListStuff = () => {
     console.log('Subscription error:', subscription.error);
     // Get the Stuff documents
     const vendorsCol = Vendors.collection.find({}).fetch();
+    console.log(vendorsCol);
     const foodItems = MenuItems.collection.find({}).fetch();
     return {
       vendors: vendorsCol,
