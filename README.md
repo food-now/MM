@@ -2,4 +2,4 @@
 
 [![ci-foodnow-build](https://github.com/food-now/MM/actions/workflows/ci.yml/badge.svg)](https://github.com/food-now/MM/actions/workflows/ci.yml)
 
-For details, please see http://ics-software-engineering.github.io/meteor-application-template-react/
+For details, please see https://food-now.github.io
